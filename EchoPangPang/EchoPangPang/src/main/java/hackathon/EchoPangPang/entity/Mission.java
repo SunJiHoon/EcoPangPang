@@ -14,7 +14,7 @@ import lombok.*;
 public class Mission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "mission_id")
     private Long id; // 기본키
 
     @Column(name = "point", nullable = false)
