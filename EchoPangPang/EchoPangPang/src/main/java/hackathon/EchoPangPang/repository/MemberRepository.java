@@ -9,6 +9,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MemberRepository extends JpaRepository<Member, Long> {
-
+    Member findByEmail(String email); //email을 받아서 멤버 객체 return
 }
 
