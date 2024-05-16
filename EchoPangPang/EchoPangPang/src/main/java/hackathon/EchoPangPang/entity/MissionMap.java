@@ -21,21 +21,21 @@ public class MissionMap {
     @Column(name = "member_id", insertable = false, updatable = false)
     private Long memberId;
 
-
     @Id
     @Column(name = "mission_id", insertable = false, updatable = false)
     private Long missionId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "member", nullable = false) // 외래키 열 이름 member
-//    private Member member;
-//
-//    @ManyToOne
-//    @JoinColumn(name = "mission", nullable = false) //외래키 열 이름 missionId
-//    private Mission mission;
+    @ManyToOne
+    @JoinColumn(name = "member", nullable = false) // member 객체
+    private Member member;
 
-    @Column(nullable = false)
-    private String status;
+    @ManyToOne
+    @JoinColumn(name = "mission", nullable = false) //mission 객체
+    private Mission mission;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private MissionStatus status; // enum, mission의 상태
 }
 
 
