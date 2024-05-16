@@ -14,11 +14,12 @@ import lombok.*;
 public class Mission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id; // 기본키
 
-    @Column(nullable = false)
-    private int point = 0; // 미션마다 다른데 통일하면 여기서 설정해버리면 됨
+    @Column(name = "point", nullable = false)
+    private int point = 0; // 미션마다 다른데 통일하면 여기서 default 설정해버리면 됨
 
-    @Column(nullable = false)
-    private String content;
+    @Column(name = "content", nullable = false)
+    private String content; // 미션 내용
 }

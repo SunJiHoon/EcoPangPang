@@ -16,20 +16,21 @@ import java.time.LocalDateTime;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id; // 기본키
 
-    @Column(nullable = false)
+    @Column(name = "name", nullable = false)
     private String name; // 이름
 
-    @Column(nullable = false)
+    @Column(name = "email", nullable = false)
     private String email; // 이메일
 
-    @Column(nullable = false)
+    @Column(name = "password", nullable = false)
     private String password; // 비밀번호
 
-    @Column(nullable = false)
+    @Column(name = "point", nullable = false)
     private int point = 0; // 가지고 있는 포인트, 기본값 0
 
-    @Column(nullable = false)
+    @Column(name = "created_time",nullable = false)
     private LocalDateTime created_time = LocalDateTime.now(); // 생성시각인데 필요 없으면 삭제
 }
