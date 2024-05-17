@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.controller;
 
+import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionStatus;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -51,6 +52,8 @@ public class FrontDevController {
     @GetMapping(value = "/SignUp")
     String getSignUpPage(Model model){
 //        model.addAttribute("CurrPath", pathControllerApi.getCurrPath());
+        model.addAttribute("member", new Member()); // 새로운 멤버 객체를 모델에 추가
+
         return "SignUp";
     }
 

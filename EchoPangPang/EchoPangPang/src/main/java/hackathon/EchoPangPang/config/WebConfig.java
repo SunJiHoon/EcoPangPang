@@ -23,6 +23,13 @@ public class WebConfig implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(loginInterceptor) // 인터셉터 등록
                 .addPathPatterns("/**") // 모든 경로 검사
-                .excludePathPatterns("/login", "/register", "/css/**", "/js/**"); // 특정 경로는 제외
+                .excludePathPatterns(
+                        "/assets/**",
+                        "/front/dev/**",
+                        "/SignUp",
+                        "/LoginPage"
+//                        "/front/dev/**"
+
+                        ); // 특정 경로는 제외
     }
 }
