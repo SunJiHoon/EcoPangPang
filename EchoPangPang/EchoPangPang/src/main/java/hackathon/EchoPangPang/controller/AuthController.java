@@ -1,4 +1,4 @@
-package hackathon.EchoPangPang.Controller;
+package hackathon.EchoPangPang.controller;
 
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.service.AuthService;
