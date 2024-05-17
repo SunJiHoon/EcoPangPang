@@ -1,6 +1,9 @@
 package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 /**
  * MissionMap 엔티티 클래스.
@@ -14,6 +17,9 @@ import jakarta.persistence.*;
  *         단점: 엔티티 간의 관계를 명시적으로 표현하지 못함, 추가 쿼리가 필요할 수 있음.
  */
 @Entity
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @IdClass(MissionMapPK.class)
 public class MissionMap {
 
