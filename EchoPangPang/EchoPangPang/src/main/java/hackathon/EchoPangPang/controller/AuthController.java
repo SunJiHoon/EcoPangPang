@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.controller;
 
+import hackathon.EchoPangPang.dto.ToDoItem;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionStatus;
 import hackathon.EchoPangPang.service.AuthService;
@@ -13,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 @RequiredArgsConstructor
 @Controller
@@ -23,6 +23,10 @@ public class AuthController {
     /*
     로그인 페이지: 기존 사용자 자격 증명을 입력받기 위한 폼만 제공하며, 별도의 모델 객체가 필요하지 않습니다.
     * */
+    @GetMapping(value = "/")
+    String getIndexPage(Model model){
+        return "redirect:/LoginPage";
+    }
 
     @GetMapping(value = "/LoginPage")
     String getLoginPage(Model model){

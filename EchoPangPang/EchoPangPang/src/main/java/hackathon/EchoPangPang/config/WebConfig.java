@@ -27,7 +27,10 @@ public class WebConfig implements WebMvcConfigurer {
                         "/assets/**",
                         "/front/dev/**",
                         "/SignUp",
-                        "/LoginPage"
+                        "/LoginPage",
+                        "/index",
+                        "/"
+
 //                        "/front/dev/**"
 
                         ); // 특정 경로는 제외
