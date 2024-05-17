@@ -2,6 +2,7 @@ package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
@@ -13,7 +14,7 @@ import java.time.LocalDateTime;
  */
 
 @Entity
-@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member {
@@ -28,6 +29,7 @@ public class Member {
     @Column(name = "email", nullable = false)
     private String email; // 이메일
 
+    @Setter
     @Column(name = "password", nullable = false)
     private String password; // 비밀번호
 
