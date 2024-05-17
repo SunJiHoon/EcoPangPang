@@ -18,4 +18,9 @@ public class FrontDevController {
         return "LoginPage";
     }
 
+    @GetMapping(value = "/MainPage")
+    String getMainPage(Model model){
+        return "MainPage";
+    }
+
 }

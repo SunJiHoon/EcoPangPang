@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using TTF Font in HTML</title>
+    <style>
+        @font-face {
+            font-family: MyCustomFont;
+            src: url('/assets/ttfs/JalnanGothicTTF.ttf');
+        }
+        /* Define font class */
+        .custom-font {
+            font-family: MyCustomFont, sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+<h1 class="custom-font">This is a heading</h1>
+<p class="custom-font">This is a paragraph using the custom TTF font.</p>
+</body>
+</html>
