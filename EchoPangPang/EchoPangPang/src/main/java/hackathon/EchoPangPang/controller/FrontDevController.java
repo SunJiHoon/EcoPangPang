@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.controller;
 
+import hackathon.EchoPangPang.dto.ToDoItem;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionStatus;
 import lombok.AllArgsConstructor;
@@ -67,28 +68,3 @@ public class FrontDevController {
 
 }
 
-class ToDoItem {
-    private String description;
-    private MissionStatus status;
-
-    public ToDoItem(String description, MissionStatus status) {
-        this.description = description;
-        this.status = status;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public MissionStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(MissionStatus check) {
-        this.status = check;
-    }
-}
