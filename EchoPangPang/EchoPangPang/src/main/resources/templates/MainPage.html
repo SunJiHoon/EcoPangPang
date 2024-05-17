@@ -1,23 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Using TTF Font in HTML</title>
-    <style>
-        @font-face {
-            font-family: MyCustomFont;
-            src: url('/assets/ttfs/JalnanGothicTTF.ttf');
-        }
-        /* Define font class */
-        .custom-font {
-            font-family: MyCustomFont, sans-serif;
-        }
-
-    </style>
+    <link rel="stylesheet" href="/assets/stylesheets/MainPage.css">
 </head>
-<body>
-<h1 class="custom-font">This is a heading</h1>
-<p class="custom-font">This is a paragraph using the custom TTF font.</p>
+<body class="background-container">
+<!--<h1 class="custom-font">This is a heading</h1>-->
+<!--<p class="custom-font">This is a paragraph using the custom TTF font.</p>-->
+<!--<div class="background-container">-->
+
+<div class="divBackground-container">
+    <p style="font-weight: bold;"><span th:text="|< ${todayDate} >|"></span></p>
+    <ul>
+        <li th:each="item, stat : ${todayToDoList}" class="custom-font">
+            <label>
+                <input type="checkbox" class="custom-checkbox" th:checked="|${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}|" />
+                <span th:classappend="${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? 'completed'">
+<!--                    <span th:text="'목록 ' + (${stat.index + 1}) + ': ' + ${item.description}"></span>-->
+                    <span th:text="${item.description}"></span>
+                </span>
+            </label>
+        </li>
+    </ul>
+</div>
+<img src="/assets/images/Transparency.png" alt="투명 이미지" style="width: 20px; height: auto;">
+
+<div class="divBackground-container">
+    <p class="custom-font"><span th:text="|${puangLevel}|"></span></p>
+    <p class="custom-font" style = "font-size: 35px;"><span th:text="|${myPuangName}|"></span></p>
+
+    <div class="progress">
+        <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+    <p id="percentageValue" style = "font-size: 12px; text-align: right;"><span th:text="|${perCentage} %|"></span></p>
+
+    <!--    <p><span th:text="|${puangPicture}|"></span></p>-->
+    <div style="text-align: center;">
+        <img th:src="@{${puangPicture}}" alt="puangPicture" style="max-width: 70%; height: auto;">
+    </div>
+
+
+    <form id="form2" class="floating-element" action="/your/post/endpoint" method="post">
+        <button class = "custom-button" type="submit" name="appType" value="record_app">
+            <img src="/assets/images/puang1.png" alt="수상기록 앱" style="width :50px; height: 50px">
+        </button>
+    </form>
+
+    <form id="form1" class="floating-element" action="/your/post/endpoint" method="post">
+        <button class = "custom-button" type="submit" name="appType" value="calendar">
+            <img src="/assets/images/puang1.png" alt="달력" style="width :50px; height: 50px">
+        </button>
+    </form>
+
+
+
+</div>
+
+
+
 </body>
 </html>
+<script>
+    // JavaScript에서 요소 찾기
+    var percentageElement = document.getElementById('percentageValue');
+
+    // 요소에서 텍스트 값 가져오기
+    var percent = parseInt(percentageElement.textContent);
+
+    // 원하는 퍼센트 값
+    // var percent = 75;
+
+    // 프로그레스 바 요소 가져오기
+    var progressBar = document.querySelector('.progress-bar');
+
+    // 프로그레스 바의 너비를 퍼센트에 맞게 조정
+    progressBar.style.width = percent + '%';
+    progressBar.setAttribute('aria-valuenow', percent);
+</script>
