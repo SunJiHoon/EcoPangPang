@@ -2,7 +2,7 @@ package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.Column;
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 이 클래스는 회원과 미션의 복합 키를 정의한다.
  * Serializable => 복합키를 사용할 때 반드시 필요 (JPA 명세에 따름)
  */
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class MissionMapPK implements Serializable {

@@ -8,7 +8,7 @@ import lombok.*;
  * 미션 자체의 정보를 저장
  */
 @Entity
-@Data
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Mission {
