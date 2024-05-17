@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Using TTF Font in HTML</title>
+    <title>Main Page</title>
     <link rel="stylesheet" href="/assets/stylesheets/MainPage.css">
 </head>
 <body class="background-container">
@@ -62,20 +62,8 @@
 
 </body>
 </html>
-<script>
-    // JavaScript에서 요소 찾기
-    var percentageElement = document.getElementById('percentageValue');
+<script src="/assets/javascripts/MainPage.js"></script>
 
-    // 요소에서 텍스트 값 가져오기
-    var percent = parseInt(percentageElement.textContent);
-
-    // 원하는 퍼센트 값
-    // var percent = 75;
-
-    // 프로그레스 바 요소 가져오기
-    var progressBar = document.querySelector('.progress-bar');
-
-    // 프로그레스 바의 너비를 퍼센트에 맞게 조정
-    progressBar.style.width = percent + '%';
-    progressBar.setAttribute('aria-valuenow', percent);
-</script>
+<!--<script>-->
+<!--    // JavaScript에서 요소 찾기-->
+<!--</script>-->
