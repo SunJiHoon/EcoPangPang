@@ -1,0 +1,67 @@
+/*<style>*/
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+.calendar {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+.calendar header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+}
+.calendar header .month-year {
+    font-size: 1.2em;
+}
+.calendar table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.calendar th, .calendar td {
+    width: 14.28%;
+    text-align: center;
+    padding: 10px;
+}
+.calendar th {
+    background-color: #f4f4f4;
+}
+.calendar td {
+    cursor: pointer;
+}
+.calendar .today {
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+}
+.stamp {
+    position: relative;
+    top: 0px;
+    right: 0px;
+    width: 10px;
+    height: 10px;
+    background-color: #28a745;
+    border-radius: 50%;
+}
+.stamp img {
+    position: absolute;
+    top: -40px;
+    right: -30px;
+    width: 50px; /* 이미지의 크기 조절 가능 */
+    height: auto;
+    border-radius: 50%;
+}
+
+/*</style>*/

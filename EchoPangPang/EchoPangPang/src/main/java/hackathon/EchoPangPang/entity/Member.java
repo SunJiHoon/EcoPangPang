@@ -31,6 +31,9 @@ public class Member {
     @Column(name = "point", nullable = false)
     private int point = 0; // 가지고 있는 포인트, 기본값 0
 
+    @Embedded
+    private Puang puang;
+
     @Column(name = "created_time",nullable = false)
     private LocalDateTime created_time = LocalDateTime.now(); // 생성시각인데 필요 없으면 삭제
 }

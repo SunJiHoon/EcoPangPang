@@ -1,76 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .login-container {
-            width: 300px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .login-container h2 {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        .form-group button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .form-group button:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>로그인 페이지</title>
 </head>
+<link rel="stylesheet" href="/assets/stylesheets/Common.css">
 <body>
-<div class="login-container">
-    <h2>Login</h2>
-    <form action="#" method="post">
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+
+
+
+<div class ="vertical-container">
+    <div style="text-align: center;">
+        <img src="/assets/images/Transparency.png" alt="투명 이미지" style="max-width: 50%; height: auto;">
+
+        <img src="/assets/images/PuangFace.png" alt="푸앙 얼굴 이미지" style="max-width: 70%; height: auto;">
+    </div>
+
+    <div class="outer-container">
+        <div class="login-container">
+
+<!--            <h2>Login</h2>-->
+            <form action="#" method="post">
+                <div class="form-group">
+                    <label for="username"> </label>
+                    <div class="outer-container">
+                        <input type="text" id="username" name="username" required placeholder="아이디를 입력해주세요." style="background-color: #5BC2EC;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password"> </label>
+                    <div class="outer-container">
+                        <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요." style="background-color: #5BC2EC;">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="outer-container">
+                        <button type="submit">로그인</button>
+                    </div>
+                </div>
+            </form>
+            <div class="outer-container">
+<!--                <button type="submit">회원가입</button>-->
+                <form action="/register" method="get">
+                    <!-- 기타 폼 요소들 -->
+                    <button type="submit" class="register-link">&nbsp;회원가입&nbsp;&nbsp;</button>
+                </form>
+<!--                <p>|</p>-->
+                <form action="/findId" method="get">
+                    <!-- 기타 폼 요소들 -->
+                    <button type="submit" class="register-link">아이디 찾기&nbsp;&nbsp;</button>
+                </form>
+<!--                <p>|</p>-->
+                <form action="/findPassword" method="get">
+                    <!-- 기타 폼 요소들 -->
+                    <button type="submit" class="register-link">비밀번호 찾기</button>
+                </form>
+            </div>
+
         </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
-        </div>
-        <div class="form-group">
-            <button type="submit">Login</button>
-        </div>
-    </form>
+    </div>
 </div>
+<!--</div>-->
 </body>
 </html>
