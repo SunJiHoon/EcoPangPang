@@ -17,7 +17,7 @@ import java.util.List;
 @Slf4j
 public class FrontDevController {
     @GetMapping(value = "/LoginPage")
-    String getMagicUniv_enroll_01(Model model){
+    String getLoginPage(Model model){
 //        model.addAttribute("CurrPath", pathControllerApi.getCurrPath());
         return "LoginPage";
     }
@@ -47,6 +47,20 @@ public class FrontDevController {
 
         return "MainPage";
     }
+
+    @GetMapping(value = "/SignUp")
+    String getSignUpPage(Model model){
+//        model.addAttribute("CurrPath", pathControllerApi.getCurrPath());
+        return "SignUp";
+    }
+
+    @GetMapping(value = "/Calender")
+    String getCalenderPage(Model model){
+//        model.addAttribute("CurrPath", pathControllerApi.getCurrPath());
+        return "Calender";
+    }
+
+
 
 }
 
