@@ -25,10 +25,10 @@ body {
     justify-content: center;
     align-items: center;
 
-    width: 300px;
+    width: 250px;
     padding: 20px;
-    /*background-color: #fff;*/
-    /*border-radius: 5px;*/
+    background-color: #fff;
+    border-radius: 50px;
     /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);*/
 }
 .login-container h2 {
@@ -72,4 +72,6 @@ body {
     padding: 0; /* 여백 제거 */
     font: inherit; /* 글꼴 상속 */
     /* 필요에 따라 추가적인 스타일 지정 */
+    font-size: 12px; /* 텍스트 크기 줄임 */
+
 }
