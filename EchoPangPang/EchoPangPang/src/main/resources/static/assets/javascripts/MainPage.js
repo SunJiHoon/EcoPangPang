@@ -12,3 +12,14 @@ var progressBar = document.querySelector('.progress-bar');
 // 프로그레스 바의 너비를 퍼센트에 맞게 조정
 progressBar.style.width = percent + '%';
 progressBar.setAttribute('aria-valuenow', percent);
+
+document.getElementById('menu-button').addEventListener('click', function() {
+    var elements = document.querySelectorAll('.floating-element');
+    elements.forEach(function(element) {
+        if (element.style.display === 'none' || element.style.display === '') {
+            element.style.display = 'block'; // 보이게 하기
+        } else {
+            element.style.display = 'none'; // 숨기기
+        }
+    });
+});
