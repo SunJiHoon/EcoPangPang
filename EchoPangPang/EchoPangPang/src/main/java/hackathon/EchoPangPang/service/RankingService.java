@@ -1,16 +1,19 @@
 package hackathon.EchoPangPang.service;
 
 import hackathon.EchoPangPang.entity.Member;
+import hackathon.EchoPangPang.repository.MemberRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class RankingService {
 
-    @Autowired
-    hackathon.EchoPangPang.repository.MemberRepository memberRepository;
+
+    private final MemberRepository memberRepository;
 
     public List<Member> sortMemberByPoint() { //entity 추가하면 수정하기
         List<Member> members = memberRepository.findAll();
