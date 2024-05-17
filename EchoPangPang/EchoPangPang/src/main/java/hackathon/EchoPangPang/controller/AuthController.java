@@ -1,5 +1,7 @@
 package hackathon.EchoPangPang.controller;
 
+import hackathon.EchoPangPang.dto.LoginDTO;
+import hackathon.EchoPangPang.dto.RegisterDTO;
 import hackathon.EchoPangPang.dto.ToDoItem;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionStatus;
@@ -21,22 +23,27 @@ public class AuthController {
     private final AuthService authService;
 
     /*
-    로그인 페이지: 기존 사용자 자격 증명을 입력받기 위한 폼만 제공하며, 별도의 모델 객체가 필요하지 않습니다.
+    로그인 페이지
     * */
-    @GetMapping(value = "/")
+    @GetMapping("/")
     String getIndexPage(Model model){
         return "redirect:/LoginPage";
     }
 
-    @GetMapping(value = "/LoginPage")
+    @GetMapping("/LoginPage")
     String getLoginPage(Model model){
+        model.addAttribute("loginDTO", new LoginDTO());
         return "LoginPage";
     }
 
     @PostMapping("/LoginPage")
-    public String login(@RequestParam("email") String email, @RequestParam("password") String password, HttpSession session, Model model) {
+    public String login(
+            LoginDTO loginDTO,
+            HttpSession session,
+            Model model
+    ) {
         try {
-            Member member = authService.login(email, password);
+            Member member = authService.login(loginDTO);
             session.setAttribute("member", member);
             return "redirect:/MainPage";
         } catch (IllegalArgumentException e) {
@@ -46,28 +53,32 @@ public class AuthController {
     }
 
     /*
-    * 회원가입 페이지: 새로운 사용자 데이터를 입력받기 위해 빈 Member 객체를 모델에 추가하여 폼 데이터 바인딩을 지원합니다.
+    * 회원가입 페이지
     * */
     @GetMapping("/SignUp")
-    public String register(Model model) {
-        model.addAttribute("member", new Member()); // 새로운 멤버 객체를 모델에 추가
+    public String getSignUpForm(Model model) {
+        model.addAttribute("registerDTO", new RegisterDTO());
         return "SignUp";
     }
 
     @PostMapping("/SignUp")
-    public String register(Member member, Model model, HttpSession session) {
+    public String register(
+            RegisterDTO registerDTO,
+            Model model,
+            HttpSession session
+    ) {
         try {
-            authService.register(member);
+            Member member = authService.register(registerDTO);
             session.setAttribute("member", member);
-            model.addAttribute("member", new Member()); // 새로운 멤버 객체를 모델에 추가
-
             return "redirect:/MainPage";
+
         } catch (IllegalArgumentException e) {
             model.addAttribute("error", e.getMessage());
             System.out.println(e.getMessage());
             return "SignUp";
         }
     }
+
     @GetMapping("/MainPage")
     public String MainPage(Model model) {
         model.addAttribute("todayDate", "5월 17일 금요일");
