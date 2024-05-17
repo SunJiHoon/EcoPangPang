@@ -18,7 +18,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         HttpSession session = request.getSession();
         if (session.getAttribute("member") == null) { // 멤버 속성 확인
-            response.sendRedirect("/login"); // 로그인 페이지로 리다이렉트
+            response.sendRedirect("/SignUp"); // 로그인 페이지로 리다이렉트
             return false;  // 요청 중단
         }
         return true; // 요청을 계속 진행
