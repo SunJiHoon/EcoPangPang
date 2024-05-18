@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.entity;
 
+import hackathon.EchoPangPang.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,7 +22,7 @@ import java.time.LocalDate;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class MissionMap {
+public class MissionMap extends BaseEntity {
 //    @Id
 //    @Column(name = "member_id", insertable = false, updatable = false)
 //    private Long memberId;
