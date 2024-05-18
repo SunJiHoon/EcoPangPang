@@ -25,6 +25,11 @@ public class RankingService {
         return members;
     }
 
+    /*
+    값이 없는 경우
+    email: [Optional.empty] 반환
+    name: [] 반환
+     */
     public List<Optional<Member>> search(String toFind) {
         List<Optional<Member>> findMember = new ArrayList<>();
         if (toFind.contains("@")) {
