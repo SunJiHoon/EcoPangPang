@@ -67,4 +67,10 @@ public class RankingService {
         }
         return result;
     }
+
+    public RankingDTO userInfo(Long id) {
+        Member findMember = memberRepository.findById(id).get();
+
+        return RankingDTO.of(findMember);
+    }
 }
