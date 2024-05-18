@@ -45,10 +45,7 @@ public class MissionMap extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private MissionStatus status = MissionStatus.NOT_STARTED; // enum, mission의 상태
-
-    @Column(name = "created_at")
-    private LocalDate createdAt = LocalDate.now();
+    private MissionStatus status; // enum, mission의 상태
 }
 
 

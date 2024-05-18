@@ -24,6 +24,4 @@ public class Stamp extends BaseEntity {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    @Column(name = "created_date", nullable = false)
-    private LocalDate created_date;
 }
