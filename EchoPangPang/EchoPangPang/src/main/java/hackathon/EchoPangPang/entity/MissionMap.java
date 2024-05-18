@@ -1,10 +1,12 @@
 package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 /**
  * MissionMap 엔티티 클래스.
@@ -20,6 +22,8 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class MissionMap {
 //    @Id
 //    @Column(name = "member_id", insertable = false, updatable = false)
@@ -46,7 +50,7 @@ public class MissionMap {
     private MissionStatus status = MissionStatus.NOT_STARTED; // enum, mission의 상태
 
     @Column(name = "created_at")
-    private LocalDateTime created_at = LocalDateTime.now();
+    private LocalDate createdAt = LocalDate.now();
 }
 
 

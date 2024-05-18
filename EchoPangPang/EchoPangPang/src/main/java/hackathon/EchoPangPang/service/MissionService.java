@@ -3,6 +3,7 @@ package hackathon.EchoPangPang.service;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.Mission;
 import hackathon.EchoPangPang.entity.MissionMap;
+import hackathon.EchoPangPang.entity.MissionStatus;
 import hackathon.EchoPangPang.repository.MemberRepository;
 import hackathon.EchoPangPang.repository.MissionMapRepository;
 import hackathon.EchoPangPang.repository.MissionRepository;
@@ -10,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
@@ -40,10 +41,6 @@ public class MissionService {
         for (Member member : members) {
             updateMissionForMember(member);
         }
-        // List<Member> members = memberRepository.findAll();
-        // for (Member member : members) {
-        //     updateMissionsForMember(member);
-        // }
     }
 
     /***
@@ -55,13 +52,18 @@ public class MissionService {
         // Logic to update missions for a specific member
 
         List<Mission> allMission = missionRepository.findAll();
-        List<Mission> dailyMission = new ArrayList<>();
-        dailyMission = selectRandomMissions(allMission, 3);
+        List<Mission> dailyMissions = selectRandomMissions(allMission, 3);
 
-        // List<Mission> newMissions = generateNewMissions();
-        // List<MissionMap> currentMissions = missionMapRepository.findByMemberId(member.getId());
-        // missionMapRepository.deleteAll(currentMissions); // Remove existing missions
-        // saveNewMissionsForMember(member, newMissions); // Assign new missions
+        // 새로운 미션을 할당한다.
+        for (Mission mission : dailyMissions) {
+            MissionMap missionMap = MissionMap.builder()
+                    .member(member)
+                    .mission(mission)
+                    .status(MissionStatus.NOT_STARTED)
+                    .createdAt(LocalDate.now())
+                    .build();
+            missionMapRepository.save(missionMap);
+        }
     }
 
     private List<Mission> selectRandomMissions(List<Mission> allMission, int count) {
@@ -74,11 +76,10 @@ public class MissionService {
      * @param member
      * @return
      */
-    public List<MissionMap> getTodayToDoList(Member member) {
-        Long id = member.getId();
-        //member id 불러와서 MissionMap List 불러오기
+    public List<MissionMap> getTodayToDoList(Member member, LocalDate today) {
+//        missionMapRepository.findByMemberAndCreatedAtBetween(member, )
 
-        
+        missionMapRepository.findByMemberAndCreatedAt(member, today);
         return null;
     }
 }

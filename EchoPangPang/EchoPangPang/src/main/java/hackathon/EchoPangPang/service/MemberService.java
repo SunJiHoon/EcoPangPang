@@ -5,8 +5,6 @@ import hackathon.EchoPangPang.dto.MainPageDTO;
 import hackathon.EchoPangPang.dto.ToDoItem;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionMap;
-import hackathon.EchoPangPang.repository.MemberRepository;
-import hackathon.EchoPangPang.repository.MissionMapRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -20,14 +18,12 @@ import java.util.List;
 public class MemberService {
 
     private final MissionService missionService;
-    private final MissionMapRepository missionMapRepository;
-    private final MemberRepository memberRepository;
 
 
     public MainPageDTO getMainPageInfo(Member member) {
 
         //missionMapList, 오늘 날짜를 반영해서 List<Mission>을 받아와야함.
-        List<MissionMap> missionMapList = missionService.getTodayToDoList(member);
+        List<MissionMap> missionMapList = missionService.getTodayToDoList(member, LocalDate.now());
 
         //missionMapList에서 미션 명, 미션 상태 추출해서 toDoItemList 만들기
         List<ToDoItem> toDoItemList = new ArrayList<>();
