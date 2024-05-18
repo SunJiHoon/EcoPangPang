@@ -28,7 +28,7 @@ public class EchoPangPangApplication {
                         .allowedOrigins("http://localhost:20007", "https://ecopuangpuang.putiez.com"
                                 , "https://ecopuang.putiez.com"
                                 , "http://m.tongtongtripmap.com", "https://m.tongtongtripmap.com")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTION")
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTION", "PATCH")
                         .allowCredentials(true).allowedHeaders("*");//;;
 
                 ////.allowedHeaders("*");;
