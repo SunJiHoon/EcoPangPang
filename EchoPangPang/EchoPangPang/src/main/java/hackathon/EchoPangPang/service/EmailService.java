@@ -11,6 +11,8 @@ import org.springframework.stereotype.Service;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
+import java.time.LocalDate;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
@@ -29,14 +31,28 @@ public class EmailService {
      *
      * @throws MessagingException 이메일 전송 중 오류가 발생하면 예외를 던진다.
      */
+
     public void sendEmail(String to) throws MessagingException {
 
         // DB에 코드 값 저장
         String code = generateRandomCode();
-        Code.builder()
-                .email(to)
-                .codeNumber(code)
-                .build();
+
+        // 이메일 주소로 코드 조회
+        Optional<Code> existingCode = codeRepository.findCodeByEmail(to);
+        Code codeObject;
+        if (existingCode.isPresent()) {
+            // 이미 존재하는 코드가 있다면 업데이트
+            codeObject = existingCode.get();
+            codeObject.setCodeNumber(code);
+        } else {
+            // 새로운 코드 생성
+            codeObject = Code.builder()
+                    .email(to)
+                    .codeNumber(code)
+                    .build();
+        }
+        codeRepository.save(codeObject);
+
         MimeMessage message = mailSender.createMimeMessage();
         MimeMessageHelper helper = new MimeMessageHelper(message, true);
 
@@ -81,4 +97,9 @@ public class EmailService {
         return randomCode;
     }
 
+    public boolean checkCode(String code, String email) throws MessagingException {
+        Optional<Code> existingCode = codeRepository.findCodeByEmail(email);
+
+        return existingCode.isPresent() && existingCode.get().getCodeNumber().equals(code);
+    }
 }

@@ -31,7 +31,6 @@ public class WebConfig implements WebMvcConfigurer {
                         "/index",
                         "/",
                         "/api/**"
-
                         ); // 특정 경로는 제외
     }
 }

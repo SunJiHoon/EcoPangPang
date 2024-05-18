@@ -23,13 +23,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Builder
 public class MissionMap extends BaseEntity {
-//    @Id
-//    @Column(name = "member_id", insertable = false, updatable = false)
-//    private Long memberId;
-//
-//    @Id
-//    @Column(name = "mission_id", insertable = false, updatable = false)
-//    private Long missionId;
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
