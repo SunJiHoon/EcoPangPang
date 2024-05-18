@@ -7,7 +7,6 @@ import lombok.Setter;
 
 @Embeddable
 @Getter
-@Setter
 public class Puang {
 
     public enum Grade {
@@ -25,4 +24,8 @@ public class Puang {
     @Column(name = "puang_grade")
     private Grade grade;
 
+    public Puang(String name, Grade grade) {
+        this.name = name;
+        this.grade = grade;
+    }
 }
