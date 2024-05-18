@@ -60,7 +60,7 @@ public class MissionService {
         }
 
         Mission mission = missionOptional.get();
-        MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(mission, today);
+        MissionMap findMission = missionMapRepository.findByMemberAndMissionAndCreatedDate(member, mission, today);
         if (findMission != null) {
             findMission.setStatus(MissionStatus.COMPLETED);
             missionMapRepository.save(findMission);
@@ -109,7 +109,7 @@ public class MissionService {
 
     public void uncheckMissionStatus(Long id, Member member) {
         LocalDate today = LocalDate.now();
-        MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(missionRepository.findById(id).get(), today);
+        MissionMap findMission = missionMapRepository.findByMemberAndMissionAndCreatedDate(member, missionRepository.findById(id).get(), today);
         findMission.setStatus(MissionStatus.NOT_STARTED);
         missionMapRepository.save(findMission);
 

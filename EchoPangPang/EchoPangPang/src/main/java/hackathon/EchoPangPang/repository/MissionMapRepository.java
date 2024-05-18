@@ -16,8 +16,10 @@ public interface MissionMapRepository extends JpaRepository<MissionMap, Long> {
 
     List<MissionMap> findByCreatedDate(LocalDate date);
 
-    MissionMap findByIdAndCreatedDate(Long id, LocalDate date);
+//    MissionMap findByIdAndCreatedDate(Long id, LocalDate date);
+//
+//    MissionMap findByMissionAndCreatedDate(Mission mission, LocalDate today);
 
-    MissionMap findByMissionAndCreatedDate(Mission mission, LocalDate today);
+    MissionMap findByMemberAndMissionAndCreatedDate(Member member, Mission mission, LocalDate today);
 
 }
