@@ -35,11 +35,17 @@ public class RankingService {
         if (toFind.contains("@")) {
             log.info("email 검색");
             try {
-                log.info("여기");
+//                log.info("여기");
                 findMember.add(memberRepository.findByEmail(toFind));
-                log.info("여기2");
+                log.info(String.valueOf(findMember));
+                if (findMember.get(0).equals(Optional.empty())) {
+                    findMember = new ArrayList<>();
+//                    log.info("이거 함?");
+                }
+//                log.info("여기2");
+                log.info(String.valueOf(findMember));
             } catch (NullPointerException e) {
-                log.info("들어감?");
+
             }
         }
         else {
