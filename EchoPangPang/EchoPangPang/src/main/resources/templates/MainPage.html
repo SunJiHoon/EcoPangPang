@@ -25,6 +25,7 @@
                 <span th:classappend="${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? 'completed'">
 <!--                    <span th:text="'목록 ' + (${stat.index + 1}) + ': ' + ${item.description}"></span>-->
                     <span th:text="${item.description}"></span>
+                    <span style="display:none" th:text="${item.id}"></span>
                 </span>
             </label>
         </li>
