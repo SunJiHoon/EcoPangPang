@@ -52,6 +52,12 @@ public class MissionService {
 //        updateDailyMissions();
 //    }
 
+    public void checkMissionStatus(Long id) {
+        LocalDate today = LocalDate.now();
+        MissionMap findMission = missionMapRepository.findByIdAndCreatedDate(id, today);
+        findMission.setStatus(MissionStatus.COMPLETED);
+    }
+
     /***
      * MissionRepository에서 모든 미션들을 불러와, 3개를 랜덤으로 선택한다.
      * MissionMap에 넣어준다.
