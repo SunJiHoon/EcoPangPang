@@ -21,7 +21,8 @@
         <li th:each="item, stat : ${mainPageDTO.getTodayToDoList()}" class="custom-font">
             <label>
                 <input type="checkbox" class="custom-checkbox"
-                       th:checked="|${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}|"/>
+                       th:checked="|${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}|"
+                       onclick="toggleCheckBox(this, '${item.id}')"/>
                 <span th:classappend="${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? 'completed'">
 <!--                    <span th:text="'목록 ' + (${stat.index + 1}) + ': ' + ${item.description}"></span>-->
                     <span th:text="${item.description}"></span>
