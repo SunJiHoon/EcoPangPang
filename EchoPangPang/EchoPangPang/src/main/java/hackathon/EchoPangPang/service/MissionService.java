@@ -60,7 +60,6 @@ public class MissionService {
                     .member(member)
                     .mission(mission)
                     .status(MissionStatus.NOT_STARTED)
-                    .createdAt(LocalDate.now())
                     .build();
             missionMapRepository.save(missionMap);
         }
@@ -77,8 +76,8 @@ public class MissionService {
      * @return
      */
     public List<MissionMap> getTodayToDoList(Member member, LocalDate today) {
-//        missionMapRepository.findByMemberAndCreatedAtBetween(member, )
 
-        return missionMapRepository.findByMemberAndCreatedAt(member, today);
+//        missionMapRepository.findByMemberAndCreatedAt(member, today);
+        return null;
     }
 }

@@ -1,10 +1,8 @@
 package hackathon.EchoPangPang.entity;
 
+import hackathon.EchoPangPang.base.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -21,10 +19,10 @@ import java.time.LocalDate;
  */
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class MissionMap {
+public class MissionMap extends BaseEntity {
 //    @Id
 //    @Column(name = "member_id", insertable = false, updatable = false)
 //    private Long memberId;
@@ -47,10 +45,7 @@ public class MissionMap {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private MissionStatus status = MissionStatus.NOT_STARTED; // enum, mission의 상태
-
-    @Column(name = "created_at")
-    private LocalDate createdAt = LocalDate.now();
+    private MissionStatus status; // enum, mission의 상태
 }
 
 
