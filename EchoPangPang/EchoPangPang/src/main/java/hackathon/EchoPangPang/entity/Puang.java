@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Puang {
 
+
     public enum Grade {
         EGG,        //알
         BABY,       //신생아
@@ -19,6 +20,7 @@ public class Puang {
         TEENAGER,   //청소년
         ADULT,       //성인
         GUARDIAN    //수호자
+        ;
     }
 
     @Column(name = "puang_name")
@@ -26,5 +28,9 @@ public class Puang {
 
     @Column(name = "puang_grade")
     private Grade grade;
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
 
 }
