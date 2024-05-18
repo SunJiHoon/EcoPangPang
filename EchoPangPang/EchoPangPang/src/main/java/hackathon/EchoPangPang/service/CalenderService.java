@@ -18,12 +18,12 @@ public class CalenderService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
 
         LocalDate localDate = LocalDate.parse(date, formatter);
-        return missionMapRepository.findByCreatedAt(localDate);
+        return missionMapRepository.findByCreatedDate(localDate);
     }
 
     public List<MissionMap> missionsOfToday() {
         LocalDate today = LocalDate.now();
 
-        return missionMapRepository.findByCreatedAt(today);
+        return missionMapRepository.findByCreatedDate(today);
     }
 }

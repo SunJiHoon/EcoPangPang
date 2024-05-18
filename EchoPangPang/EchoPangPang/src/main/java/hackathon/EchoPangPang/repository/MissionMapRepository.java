@@ -10,8 +10,8 @@ import java.util.List;
 
 @Repository
 public interface MissionMapRepository extends JpaRepository<MissionMap, Long> {
-    List<MissionMap> findByMemberAndCreatedAt(Member member, LocalDate today);
+    List<MissionMap> findByMemberAndCreatedDate(Member member, LocalDate today);
 
-    List<MissionMap> findByCreatedAt(LocalDate date);
+    List<MissionMap> findByCreatedDate(LocalDate date);
 
 }
