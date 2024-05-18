@@ -1,0 +1,25 @@
+
+#back-button-container {
+    display: block; /* 메뉴 버튼은 항상 보이도록 설정 */
+    position: fixed;
+    bottom: 30px;
+    left: 0;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0); /* 배경색을 흰색 반투명으로 설정합니다. */
+}
+.floating-element-not-none {
+    /*display: none; !* 처음에는 숨겨진 상태 *!*/
+    position: fixed;
+    /*bottom: 30px;*/
+    /*right: 0;*/
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0); /* 배경색을 흰색 반투명으로 설정합니다. */
+
+    /*color: white;*/
+    /*padding: 10px;*/
+}
+.custom-button {
+    background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
+    border: none; /* 버튼의 테두리를 제거합니다. */
+    padding: 0; /* 버튼의 여백을 제거합니다. */
+}
