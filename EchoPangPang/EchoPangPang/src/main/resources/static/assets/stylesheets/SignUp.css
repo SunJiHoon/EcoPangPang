@@ -157,3 +157,21 @@ body {
     border: none; /* 버튼의 테두리를 제거합니다. */
     padding: 0; /* 버튼의 여백을 제거합니다. */
 }
+
+#emailVerificationButton {
+    background-color: #4CAF50; /* 초록색 */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+#emailVerificationButton:hover {
+    background-color: #45a049; /* 더 진한 초록색 */
+}
