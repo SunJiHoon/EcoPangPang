@@ -49,14 +49,27 @@ public class MissionService {
 
 
     public void checkMissionStatus(Long id, Member member) {
+        if (id == null) {
+            throw new IllegalArgumentException("Mission ID must not be null");
+        }
+
         LocalDate today = LocalDate.now();
-        MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(missionRepository.findById(id).get(), today);
-        findMission.setStatus(MissionStatus.COMPLETED);
-        if (stampRepository.findByCreatedDate(today).isEmpty()) {
-            Stamp newStamp = Stamp.builder()
-                    .member(member)
-                    .build();
-            stampRepository.save(newStamp);
+        Optional<Mission> missionOptional = missionRepository.findById(id);
+        if (missionOptional.isEmpty()) {
+            throw new IllegalArgumentException("Mission not found with ID: " + id);
+        }
+
+        Mission mission = missionOptional.get();
+        MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(mission, today);
+        if (findMission != null) {
+            findMission.setStatus(MissionStatus.COMPLETED);
+
+            if (stampRepository.findByCreatedDate(today).isEmpty()) {
+                Stamp newStamp = Stamp.builder()
+                        .member(member)
+                        .build();
+                stampRepository.save(newStamp);
+            }
         }
     }
 
