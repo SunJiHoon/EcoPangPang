@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.service;
 
+import hackathon.EchoPangPang.dto.CalenderDTO;
 import hackathon.EchoPangPang.entity.MissionMap;
 import hackathon.EchoPangPang.repository.MissionMapRepository;
 import lombok.RequiredArgsConstructor;
@@ -7,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -14,16 +16,30 @@ import java.util.List;
 public class CalenderService {
     private final MissionMapRepository missionMapRepository;
 
-    public List<MissionMap> missionsOfDay(String date) {
+    public List<CalenderDTO> missionsOfDay(String date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
 
         LocalDate localDate = LocalDate.parse(date, formatter);
-        return missionMapRepository.findByCreatedDate(localDate);
+        List<MissionMap> findMissions = missionMapRepository.findByCreatedDate(localDate);
+        List<CalenderDTO> result = new ArrayList<>();
+
+        for (MissionMap findMission : findMissions) {
+            result.add(CalenderDTO.of(findMission));
+        }
+
+        return result;
     }
 
-    public List<MissionMap> missionsOfToday() {
+    public List<CalenderDTO> missionsOfToday() {
         LocalDate today = LocalDate.now();
 
-        return missionMapRepository.findByCreatedDate(today);
+        List<MissionMap> findMissions = missionMapRepository.findByCreatedDate(today);
+        List<CalenderDTO> result = new ArrayList<>();
+
+        for (MissionMap findMission : findMissions) {
+            result.add(CalenderDTO.of(findMission));
+        }
+
+        return result;
     }
 }
