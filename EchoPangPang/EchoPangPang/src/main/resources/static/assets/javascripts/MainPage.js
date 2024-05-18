@@ -2,6 +2,11 @@ var percentageElement = document.getElementById('percentageValue');
 
 // 요소에서 텍스트 값 가져오기
 var percent = parseInt(percentageElement.textContent);
+// 값이 100을 넘지 않도록 제한
+if (percent > 100) {
+    percent = 100;
+}
+
 
 // 원하는 퍼센트 값
 // var percent = 75;

@@ -7,6 +7,7 @@ import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionMap;
 import hackathon.EchoPangPang.entity.Puang;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class MemberService {
 
     private final MissionService missionService;
@@ -29,6 +31,7 @@ public class MemberService {
         //missionMapList에서 미션 명, 미션 상태 추출해서 toDoItemList 만들기
         List<ToDoItem> toDoItemList = new ArrayList<>();
         for (MissionMap missionMap : missionMapList) {
+            log.info(String.valueOf(missionMap.getStatus()));
             toDoItemList.add(new ToDoItem(missionMap.getMission().getId(),
                     missionMap.getMission().getContent(), missionMap.getStatus()));
         }
