@@ -18,7 +18,7 @@ public class RankingApiController {
 
     @GetMapping("/Ranking/Sort")
     @ResponseBody
-    public List<Member> sortApiController() {
+    public List<RankingDTO> sortApiController() {
         return rankingService.sortMemberByPoint();
     }
 

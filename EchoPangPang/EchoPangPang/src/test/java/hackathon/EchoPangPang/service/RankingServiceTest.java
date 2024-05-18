@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.service;
 
+import hackathon.EchoPangPang.dto.RankingDTO;
 import hackathon.EchoPangPang.entity.Member;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,11 @@ class RankingServiceTest {
 
     @Test
     void sortMemberByPoint() {
-        List<Member> members = rankingService.sortMemberByPoint();
-        for (Member member : members) {
+        List<RankingDTO> members = rankingService.sortMemberByPoint();
+//        for (Member member : members) {
+//            System.out.println("member = " + member.getPoint());
+//        }
+        for (RankingDTO member : members) {
             System.out.println("member = " + member.getPoint());
         }
     }

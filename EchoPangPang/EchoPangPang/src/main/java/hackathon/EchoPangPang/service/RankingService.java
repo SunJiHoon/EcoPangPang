@@ -19,17 +19,20 @@ public class RankingService {
 
     private final MemberRepository memberRepository;
 
-    public List<Member> sortMemberByPoint() { //entity 추가하면 수정하기
+    public List<RankingDTO> sortMemberByPoint() { //entity 추가하면 수정하기
         List<Member> members = memberRepository.findAll();
         members.sort((m1, m2) -> Integer.compare(m2.getPoint(), m1.getPoint()));
 
-        return members;
+        List<RankingDTO> result = new ArrayList<>();
+        for (Member member : members) {
+            result.add(RankingDTO.of(member));
+        }
+
+        return result;
     }
 
     /*
-    값이 없는 경우
-    email: [Optional.empty] 반환
-    name: [] 반환
+    값이 없는 경우 [] 반환
      */
     public List<RankingDTO> search(String toFind) {
         List<Optional<Member>> findMember = new ArrayList<>();
