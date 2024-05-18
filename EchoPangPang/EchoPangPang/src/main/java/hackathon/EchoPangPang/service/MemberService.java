@@ -5,6 +5,7 @@ import hackathon.EchoPangPang.dto.MainPageDTO;
 import hackathon.EchoPangPang.dto.ToDoItem;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionMap;
+import hackathon.EchoPangPang.entity.Puang;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -32,19 +33,11 @@ public class MemberService {
         }
 
         //멤버 포인트
+        //멤버 포인트를 체크하고, 그에 따라 Puang 상태를 반영해야한다
         int point = member.getPoint();
 
         // percentage -> point 값에 따라, 다음 진화까지 진행도를 나타낸다.
-        int maxPointsForNextLevel;
-        switch (member.getPuang().getGrade()) {
-            case EGG -> maxPointsForNextLevel = 5; // EGG -> BABY로 진화하기 위한 최대 포인트 예시 값
-            case BABY -> maxPointsForNextLevel = 10; // BABY -> CHILD
-            case CHILD -> maxPointsForNextLevel = 15; // CHILD -> TEENAGER
-            case TEENAGER -> maxPointsForNextLevel = 25; // TEENAGER -> ADULT
-            case ADULT -> maxPointsForNextLevel = 35; // ADULT -> GUARDIAN
-            case GUARDIAN -> maxPointsForNextLevel = 1000;
-            default -> throw new IllegalStateException("Unexpected value: " + member.getPuang().getGrade());
-        }
+        int maxPointsForNextLevel = getMaxPointsForNextLevel(member.getPuang().getGrade());
 
         // percentage 계산
         int percentage = (point * 100) / maxPointsForNextLevel;
@@ -97,5 +90,25 @@ public class MemberService {
                 .todayDate(today.format(formatter))
                 .build();
 
+    }
+
+    // 다음 레벨에 필요한 점수를 얻는 메서드
+    private int getMaxPointsForNextLevel(Puang.Grade puangGrade) {
+        switch (puangGrade) {
+            case EGG:
+                return 5;
+            case BABY:
+                return 10;
+            case CHILD:
+                return 15;
+            case TEENAGER:
+                return 25;
+            case ADULT:
+                return 35;
+            case GUARDIAN:
+                return 1000;
+            default:
+                throw new IllegalStateException("Unexpected value: " + puangGrade);
+        }
     }
 }
