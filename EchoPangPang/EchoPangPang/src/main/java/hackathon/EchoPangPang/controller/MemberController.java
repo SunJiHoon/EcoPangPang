@@ -1,8 +1,9 @@
 package hackathon.EchoPangPang.controller;
 
 
+import hackathon.EchoPangPang.dto.MainPageDTO;
 import hackathon.EchoPangPang.entity.Member;
-import hackathon.EchoPangPang.service.MissionService;
+import hackathon.EchoPangPang.service.MemberService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MemberController {
-
-    private final MissionService missionService;
+    private final MemberService memberService;
 
     @Autowired
-    public MemberController(MissionService missionService) {
-        this.missionService = missionService;
+    public MemberController(MemberService memberService) {
+        this.memberService = memberService;
     }
 
     /***
@@ -29,36 +29,14 @@ public class MemberController {
      */
     @GetMapping("/MainPage")
     public String MainPage(Model model, HttpServletRequest request) {
-
         HttpSession session = request.getSession();
         Member member = (Member) session.getAttribute("member");
 
-        missionService.getTodayToDoList(member);
+        MainPageDTO mainPageDTO = memberService.getMainPageInfo(member);
+
+        model.addAttribute("mainPageDTO", mainPageDTO);
 
         return "MainPage";
-
-        //DTO생성하고, model에 담아 넘겨주기.
-
-
-//        model.addAttribute("todayDate", "5월 17일 금요일");
-//
-//        List<ToDoItem> todayToDoList = Arrays.asList(
-//                new ToDoItem("대중교통 이용하기", MissionStatus.COMPLETED),
-//                new ToDoItem("메일함 비우기", MissionStatus.NOT_STARTED),
-//                new ToDoItem("분리수거 하기", MissionStatus.FAILED)
-//        );
-//
-//
-//        model.addAttribute("todayToDoList", todayToDoList);
-//
-//
-//        model.addAttribute("puangLevel", "Lv.4 청소년 푸앙");
-//        model.addAttribute("myPuangName", "푸앙");
-//        model.addAttribute("perCentage", "95");
-////puangPicture
-////        model.addAttribute("puangPicture", "1");
-//        model.addAttribute("puangPicture", "/assets/images/" + "puang4" + ".png");
-//        return "MainPage";
     }
 
 }
