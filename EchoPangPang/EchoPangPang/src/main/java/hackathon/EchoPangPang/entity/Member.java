@@ -1,10 +1,7 @@
 package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
@@ -17,6 +14,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,6 +37,11 @@ public class Member {
     @Embedded
     private Puang puang;
 
-    @Column(name = "created_time",nullable = false)
-    private LocalDateTime created_time = LocalDateTime.now(); // 생성시각인데 필요 없으면 삭제
+    @Column(name = "created_time", nullable = false, updatable = false)
+    private LocalDateTime created_time;
+
+    @PrePersist
+    protected void onCreate() {
+        created_time = LocalDateTime.now();
+    }
 }
