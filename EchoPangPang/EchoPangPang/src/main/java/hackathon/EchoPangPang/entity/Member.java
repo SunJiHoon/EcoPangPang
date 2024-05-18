@@ -4,8 +4,6 @@ import hackathon.EchoPangPang.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 /**
  * Member 엔티티 클래스
  * 이 클래스는 회원 정보를 저장하는 엔티티로 사용.
@@ -37,4 +35,8 @@ public class Member extends BaseEntity {
 
     @Embedded
     private Puang puang;
+
+    public void updatePoint(int point) {
+        this.point += point;
+    }
 }

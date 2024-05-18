@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MissionService {
@@ -57,6 +58,22 @@ public class MissionService {
                     .build();
             stampRepository.save(newStamp);
         }
+    }
+
+
+    /***
+     * mission id로 미션 조회
+     * 미션에 배정된 포인트만큼 사용자 포인트 증가시키기
+     * @param id
+     * @param member
+     * @throws Exception
+     */
+    public void checkMissionPoint(Long id, Member member) throws Exception {
+        Optional<Mission> mission = missionRepository.findById(id);
+        if (mission.isEmpty()) {
+            throw new Exception("Mission not found");
+        }
+        member.updatePoint(mission.get().getPoint());
     }
 
     /***
