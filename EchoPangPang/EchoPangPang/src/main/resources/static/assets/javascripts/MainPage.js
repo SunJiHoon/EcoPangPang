@@ -25,7 +25,8 @@ document.getElementById('menu-button').addEventListener('click', function() {
 });
 
 
-function toggleCheckBox(checkbox, itemId) {
+function toggleCheckBox(checkbox) {
+    var itemId = checkbox.getAttribute("data-item-id");
     var isChecked = checkbox.checked;
     var endpoint = isChecked ? "/api/v1/mission/check" : "/api/v1/mission/uncheck";
 
@@ -35,7 +36,7 @@ function toggleCheckBox(checkbox, itemId) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ itemId: itemId })
+        body: JSON.stringify({ id: itemId })
     })
         .then(response => {
             if (!response.ok) {
