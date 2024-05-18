@@ -3,11 +3,14 @@ package hackathon.EchoPangPang.service;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class RankingService {
@@ -22,7 +25,22 @@ public class RankingService {
         return members;
     }
 
-    public Member searchByName(String name) {
-        return memberRepository.findByName(name);
+    public List<Optional<Member>> search(String toFind) {
+        List<Optional<Member>> findMember = new ArrayList<>();
+        if (toFind.contains("@")) {
+            log.info("email 검색");
+            try {
+                log.info("여기");
+                findMember.add(memberRepository.findByEmail(toFind));
+                log.info("여기2");
+            } catch (NullPointerException e) {
+                log.info("들어감?");
+            }
+        }
+        else {
+            log.info("name 검색");
+            findMember = memberRepository.findByName(toFind);
+        }
+        return findMember;
     }
 }
