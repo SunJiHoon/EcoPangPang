@@ -82,6 +82,7 @@ public class AuthController {
     @GetMapping("/MainPage")
     public String MainPage(Model model) {
         model.addAttribute("todayDate", "5월 17일 금요일");
+        model.addAttribute("myPoint", "10");
 
         List<ToDoItem> todayToDoList = Arrays.asList(
                 new ToDoItem("대중교통 이용하기", MissionStatus.COMPLETED),
@@ -107,9 +108,9 @@ public class AuthController {
     public String getSettingPage() {
         return "Setting";
     }
-    @GetMapping("/Award")
+    @GetMapping("/Ranking")
     public String getAwardPage(){
-        return "Award";
+        return "Ranking";
     }
     @GetMapping("/Calender")
     public String getCalenderPage() {
