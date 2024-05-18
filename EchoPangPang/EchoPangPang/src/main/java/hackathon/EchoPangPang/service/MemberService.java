@@ -11,6 +11,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -79,10 +81,22 @@ public class MemberService {
                 throw new IllegalStateException("Unexpected value: " + member.getPuang().getGrade());
         }
 
-        //오늘 날짜 가져오기
-        LocalDate today = LocalDate.now();
-        //원하는 형식으로 포맷팅
+
+        // 현재 날짜와 시간을 한국 표준시(KST)로 가져오기
+        ZonedDateTime nowInKST = ZonedDateTime.now(ZoneId.of("Asia/Seoul"));
+
+        // 한국 시간에서의 현재 날짜 가져오기
+        LocalDate todayInKST = nowInKST.toLocalDate();
+
+        // 원하는 형식으로 포맷팅
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = todayInKST.format(formatter);
+
+
+//        //오늘 날짜 가져오기
+//        LocalDate today = LocalDate.now();
+//        //원하는 형식으로 포맷팅
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         return MainPageDTO.builder()
                 .todayToDoList(toDoItemList)
@@ -91,7 +105,7 @@ public class MemberService {
                 .myPuangLevel(myPuangLevel)
                 .puangPicture(puangPicture)
                 .percentage(percentage)
-                .todayDate(today.format(formatter))
+                .todayDate(formattedDate)
                 .build();
 
     }
