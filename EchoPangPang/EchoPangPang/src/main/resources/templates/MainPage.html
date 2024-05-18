@@ -16,7 +16,7 @@
 <img src="/assets/images/Transparency.png" alt="투명 이미지" style="width: 10px; height: auto;">
 
 <div class="divBackground-container">
-    <p style="font-weight: bold;"><span th:text="|< ${mainPageDTO.getTodayDate()} >|"></span></p>
+    <p style="font-weight: bold;"><span th:text="|${mainPageDTO.getTodayDate()}|"></span></p>
     <ul>
         <li th:each="item, stat : ${mainPageDTO.getTodayToDoList()}" class="custom-font">
             <label>
