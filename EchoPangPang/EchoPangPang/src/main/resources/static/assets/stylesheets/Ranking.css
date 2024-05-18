@@ -100,3 +100,15 @@ button:hover {
     border: none; /* 버튼의 테두리를 제거합니다. */
     padding: 0; /* 버튼의 여백을 제거합니다. */
 }
+.result {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: box-shadow 0.3s;
+}
+
+.result:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}

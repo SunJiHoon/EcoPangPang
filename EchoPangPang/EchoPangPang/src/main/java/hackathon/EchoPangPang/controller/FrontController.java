@@ -19,9 +19,9 @@ public class FrontController {
         return "Calender";
     }
 
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/LoginPage";
-    }
+//    @GetMapping("/logout")
+//    public String logout(HttpSession session) {
+//        session.invalidate();
+//        return "redirect:/LoginPage";
+//    }
 }

@@ -37,10 +37,11 @@ function displayResults(data) {
     resultsContainer.innerHTML = ''; // 기존 결과를 초기화
 
     if (data && data.length > 0) {
-        data.forEach(result => {
+        // 순위를 추가하기 위해 데이터를 순회하면서 순위를 할당합니다.
+        data.forEach((result, index) => {
             var resultElement = document.createElement('div');
             resultElement.classList.add('result');
-            resultElement.textContent = `이름: ${result.name}, 포인트: ${result.point}, 등급: ${result.puangGrade}`; // 결과의 제목 표시 (적절히 수정 필요)
+            resultElement.textContent = `순위: ${index + 1}, 이름: ${result.name}, 포인트: ${result.point}, 등급: ${result.puangGrade}`;
             resultsContainer.appendChild(resultElement);
         });
     } else {

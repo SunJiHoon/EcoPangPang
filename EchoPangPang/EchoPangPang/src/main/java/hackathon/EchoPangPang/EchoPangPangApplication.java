@@ -21,7 +21,7 @@ public class EchoPangPangApplication {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
-						.allowedOrigins("http://localhost:20007", "https://ecopuangpuang.putiez.com"
+						.allowedOrigins("http://localhost:20007", "https://ecopuangpuang.putiez.com", "https://ecopuang.putiez.com"
 								, "http://m.tongtongtripmap.com", "https://m.tongtongtripmap.com")
 						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTION")
 						.allowCredentials(true).allowedHeaders("*");//;;
