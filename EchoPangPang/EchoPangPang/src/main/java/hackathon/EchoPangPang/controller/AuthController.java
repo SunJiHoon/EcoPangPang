@@ -102,6 +102,20 @@ public class AuthController {
         return "MainPage";
     }
 
+
+    @GetMapping("/Setting")
+    public String getSettingPage() {
+        return "Setting";
+    }
+    @GetMapping("/Award")
+    public String getAwardPage(){
+        return "Award";
+    }
+    @GetMapping("/Calender")
+    public String getCalenderPage() {
+        return "Calender";
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
