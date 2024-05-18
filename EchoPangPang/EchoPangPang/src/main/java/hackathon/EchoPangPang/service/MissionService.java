@@ -77,6 +77,6 @@ public class MissionService {
      */
     public List<MissionMap> getTodayToDoList(Member member, LocalDate today) {
 
-        return missionMapRepository.findByMemberAndAndUpdated_date(member, today);
+        return missionMapRepository.findByMemberAndUpdatedDate(member, today);
     }
 }
