@@ -10,9 +10,13 @@
 <!--<h1 class="custom-font">This is a heading</h1>-->
 <!--<p class="custom-font">This is a paragraph using the custom TTF font.</p>-->
 <!--<div class="background-container">-->
+<div class="divBackground-container">
+    <p class="custom-font"><span th:text="|나의 현재 포인트: ${myPoint} %|"></span></p>
+</div>
+<img src="/assets/images/Transparency.png" alt="투명 이미지" style="width: 10px; height: auto;">
 
 <div class="divBackground-container">
-    <p style="font-weight: bold;"><span th:text="|< ${todayDate} >|"></span></p>
+    <p class="custom-font" style="font-weight: bold; font-size:10px;"><span th:text="|< ${todayDate} >|"></span></p>
     <ul>
         <li th:each="item, stat : ${todayToDoList}" class="custom-font">
             <label>
@@ -25,7 +29,7 @@
         </li>
     </ul>
 </div>
-<img src="/assets/images/Transparency.png" alt="투명 이미지" style="width: 20px; height: auto;">
+<img src="/assets/images/Transparency.png" alt="투명 이미지" style="width: 10px; height: auto;">
 
 <div class="divBackground-container">
     <p class="custom-font"><span th:text="|${puangLevel}|"></span></p>
@@ -38,23 +42,23 @@
 
     <!--    <p><span th:text="|${puangPicture}|"></span></p>-->
     <div style="text-align: center;">
-        <img th:src="@{${puangPicture}}" alt="puangPicture" style="max-width: 70%; height: auto;">
+        <img th:src="@{${puangPicture}}" alt="puangPicture" style="max-width: 60%; height: auto;">
     </div>
 
 
-    <form id="form3" class="floating-element" action="/setting" method="post">
+    <form id="form3" class="floating-element" action="/Setting" method="get">
         <button class = "custom-button" type="submit" name="appType" value="setting">
             <img src="/assets/images/nav_setting.png" alt="환경설정" style="width :80px; height: 80px">
         </button>
     </form>
 
-    <form id="form2" class="floating-element" action="/award" method="post">
+    <form id="form2" class="floating-element" action="/Ranking" method="get">
         <button class = "custom-button" type="submit" name="appType" value="record_app">
             <img src="/assets/images/nav_awards.png" alt="수상기록 앱" style="width :80px; height: 80px">
         </button>
     </form>
 
-    <form id="form1" class="floating-element" action="/calender" method="post">
+    <form id="form1" class="floating-element" action="/Calender" method="get">
         <button class = "custom-button" type="submit" name="appType" value="calendar">
             <img src="/assets/images/nav_calender.png" alt="달력" style="width :80px; height: 80px">
         </button>
@@ -69,10 +73,16 @@
 <!--    </form>-->
 
 
-
 </div>
 
 
+<!--<form action="/MainPage" class="floating-element-not-none" method="get">-->
+<!--    <div id="back-button-container">-->
+<!--        <button id="back-button" class = "custom-button" name="appType" value="back-button">-->
+<!--            <img src="/assets/images/nav_back.png" alt="백버튼" style="width :80px; height: 80px">-->
+<!--        </button>-->
+<!--    </div>-->
+<!--</form>-->
 
 </body>
 </html>

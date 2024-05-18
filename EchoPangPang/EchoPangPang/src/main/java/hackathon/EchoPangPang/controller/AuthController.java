@@ -81,6 +81,7 @@ public class AuthController {
     @GetMapping("/MainPage")
     public String MainPage(Model model) {
         model.addAttribute("todayDate", "5월 17일 금요일");
+        model.addAttribute("myPoint", "10");
 
         List<ToDoItem> todayToDoList = Arrays.asList(
                 new ToDoItem("대중교통 이용하기", MissionStatus.COMPLETED),
@@ -100,6 +101,7 @@ public class AuthController {
         model.addAttribute("puangPicture", "/assets/images/" + "puang4"+ ".png");
         return "MainPage";
     }
+
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
