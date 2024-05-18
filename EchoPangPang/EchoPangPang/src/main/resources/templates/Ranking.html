@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랭킹</title>
+    <link rel="stylesheet" href="/assets/stylesheets/Ranking.css">
+</head>
+<body class="background-container">
+<div class = "outer-cont">
+    <img src="/assets/images/nav_awards.png" alt="트로피" style="width :80px; height: 80px;">
+    <p class="custom-font"  style ="font-size : 50px;">
+        랭킹
+    </p>
+</div>
+
+
+<div class = "outer-cont">
+    <div class ="white-container">
+<!--        <p>-->
+<!--            검색창-->
+<!--        </p>-->
+        <label for="searchInput"></label>
+        <input type="text" id="searchInput" placeholder="사용자 이름 또는 이메일을 검색하세요.">
+        <button onclick="search()">검색</button>
+    </div>
+</div>
+
+
+<div class = "outer-cont">
+    <img src="/assets/images/Transparency.png" alt="공백 이미지용" style="width :20px; height: 20px;">
+</div>
+
+<div class = "outer-cont">
+    <div class ="white-container">
+        <div id="results">
+
+        </div>
+    </div>
+</div>
+<script src="/assets/javascripts/Ranking.js"></script>
+</body>
+</html>

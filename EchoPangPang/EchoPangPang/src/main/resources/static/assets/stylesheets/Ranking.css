@@ -1,0 +1,77 @@
+/*<style>*/
+body {
+    font-family: Arial, sans-serif;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+/*<style>*/
+@font-face {
+    font-family: MyCustomFont;
+    src: url('/assets/ttfs/JalnanGothicTTF.ttf');
+}
+/* Define font class */
+.custom-font {
+    font-family: MyCustomFont, sans-serif;
+    font-size: 25px;
+}
+
+.background-container {
+    background-image: url('/assets/images/background.jpg'); /* 배경 이미지 경로 */
+}
+.outer-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.white-container{
+    width: 320px;
+    padding : 20px;
+    /*height : 320px;*/
+    /*background-color: #fff;*/
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#searchInput {
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+}
+
+button {
+    padding: 10px 15px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#results {
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/*</style>*/

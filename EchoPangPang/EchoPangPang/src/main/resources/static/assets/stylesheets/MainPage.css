@@ -20,7 +20,7 @@
 
 .divBackground-container{
     background-color: rgba(255, 255, 255, 0.9); /* 투명한 흰색 배경 (50% 투명도) */
-    padding: 20px; /* 여백 추가 */
+    padding: 10px; /* 여백 추가 */
     border-radius: 40px; /* 모서리를 둥글게 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
 }
