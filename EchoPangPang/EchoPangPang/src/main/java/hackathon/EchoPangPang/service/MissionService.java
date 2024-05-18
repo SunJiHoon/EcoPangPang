@@ -8,6 +8,7 @@ import hackathon.EchoPangPang.repository.StampRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Collections;
@@ -47,7 +48,7 @@ public class MissionService {
         }
     }
 
-
+    @Transactional
     public void checkMissionStatus(Long id, Member member) {
         if (id == null) {
             throw new IllegalArgumentException("Mission ID must not be null");
@@ -104,6 +105,7 @@ public class MissionService {
         member.decreasePoint(mission.get().getPoint());
     }
 
+    @Transactional
     public void uncheckMissionStatus(Long id, Member member) {
         LocalDate today = LocalDate.now();
         MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(missionRepository.findById(id).get(), today);
@@ -128,7 +130,9 @@ public class MissionService {
      * MissionMap에 넣어준다.
      * @param member
      */
-    private void updateMissionForMember(Member member, List<Mission> allMission) {
+
+    @Transactional
+    protected void updateMissionForMember(Member member, List<Mission> allMission) {
         // Logic to update missions for a specific member
 
 //        List<Mission> allMission = missionRepository.findAll();
