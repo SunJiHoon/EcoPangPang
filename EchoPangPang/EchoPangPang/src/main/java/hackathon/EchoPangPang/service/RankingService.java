@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.service;
 
+import hackathon.EchoPangPang.dto.RankingDTO;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -30,8 +31,9 @@ public class RankingService {
     email: [Optional.empty] 반환
     name: [] 반환
      */
-    public List<Optional<Member>> search(String toFind) {
+    public List<RankingDTO> search(String toFind) {
         List<Optional<Member>> findMember = new ArrayList<>();
+        List<RankingDTO> result = new ArrayList<>();
         if (toFind.contains("@")) {
             log.info("email 검색");
             try {
@@ -41,6 +43,14 @@ public class RankingService {
                 if (findMember.get(0).equals(Optional.empty())) {
                     findMember = new ArrayList<>();
 //                    log.info("이거 함?");
+                } else {
+                    for (Optional<Member> member : findMember) {
+                        if (member.isPresent()) {
+                            result.add(RankingDTO.of(member.get()));
+                        }
+//                        member.ifPresent(value -> result.add(RankingDTO.of(value)));
+                    }
+//                    log.info("이거 왜 안됨?");
                 }
 //                log.info("여기2");
                 log.info(String.valueOf(findMember));
@@ -51,7 +61,10 @@ public class RankingService {
         else {
             log.info("name 검색");
             findMember = memberRepository.findByName(toFind);
+            for (Optional<Member> member : findMember) {
+                result.add(RankingDTO.of(member.get()));
+            }
         }
-        return findMember;
+        return result;
     }
 }

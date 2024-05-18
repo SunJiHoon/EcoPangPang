@@ -22,6 +22,6 @@ class RankingServiceTest {
 
     @Test
     void search() {
-        System.out.println("rankingService = " + rankingService.search("선"));
+        System.out.println("rankingService = " + rankingService.search("선지훈"));
     }
 }

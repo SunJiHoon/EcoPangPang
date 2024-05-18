@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.controller;
 
+import hackathon.EchoPangPang.dto.RankingDTO;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.service.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class RankingApiController {
 
     @GetMapping("/Ranking/Search/{toFind}")
     @ResponseBody
-    public List<Optional<Member>> searchApiController(@PathVariable(name = "toFind") String toFind) {
+    public List<RankingDTO> searchApiController(@PathVariable(name = "toFind") String toFind) {
         return rankingService.search(toFind);
     }
 
