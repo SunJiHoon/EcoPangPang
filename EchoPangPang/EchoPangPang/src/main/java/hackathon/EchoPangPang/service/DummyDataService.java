@@ -2,6 +2,7 @@ package hackathon.EchoPangPang.service;
 
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.Mission;
+import hackathon.EchoPangPang.entity.Puang;
 import hackathon.EchoPangPang.repository.MemberRepository;
 import hackathon.EchoPangPang.repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,6 +23,7 @@ public class DummyDataService {
                 .email("john@example.com")
                 .password("password1")
                 .point(50)
+                .puang(new Puang("푸앙1", Puang.Grade.EGG))
                 .build();
 
         Member member2 = Member.builder()
@@ -29,6 +31,7 @@ public class DummyDataService {
                 .email("jane@example.com")
                 .password("password2")
                 .point(100)
+                .puang(new Puang("푸앙2", Puang.Grade.ADULT))
                 .build();
 
         memberRepository.save(member1);

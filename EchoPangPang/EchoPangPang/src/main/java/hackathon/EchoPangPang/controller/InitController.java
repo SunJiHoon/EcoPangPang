@@ -1,6 +1,7 @@
 package hackathon.EchoPangPang.controller;
 
 import hackathon.EchoPangPang.service.DummyDataService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +18,8 @@ public class InitController {
     }
 
     @GetMapping("/init")
-    public String initDatabase() {
+    public ResponseEntity<String> initDatabase() {
         dummyDataService.insertDummyData();
-        return "삽입 성공";
+        return ResponseEntity.ok("Database initialized");
     }
 }
