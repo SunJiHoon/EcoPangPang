@@ -10,7 +10,7 @@ function renderInitialRankings() {
         })
         .catch(error => {
             console.error('Error:', error);
-            alert('데이터를 가져오는 중 오류가 발생했습니다.');
+            // alert('데이터를 가져오는 중 오류가 발생했습니다.');
         });
 }
 
@@ -25,7 +25,7 @@ function search() {
             })
             .catch(error => {
                 console.error('Error:', error);
-                alert('검색 중 오류가 발생했습니다.');
+                // alert('검색 중 오류가 발생했습니다.');
             });
     } else {
         alert('검색어를 입력하세요.');
