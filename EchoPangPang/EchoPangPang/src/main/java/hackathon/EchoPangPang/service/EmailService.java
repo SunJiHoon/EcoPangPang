@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 
@@ -31,7 +32,7 @@ public class EmailService {
      *
      * @throws MessagingException 이메일 전송 중 오류가 발생하면 예외를 던진다.
      */
-
+    @Transactional
     public void sendEmail(String to) throws MessagingException {
 
         // DB에 코드 값 저장
