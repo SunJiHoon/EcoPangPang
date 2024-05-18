@@ -1,20 +1,31 @@
 package hackathon.EchoPangPang.controller;
 
+import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.service.RankingService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
+@RequestMapping(value = "/api")
 public class RankingApiController {
 
     @Autowired
     RankingService rankingService;
 
-//    @GetMapping("")
-//    @ResponseBody
-//    public List<>
+    @GetMapping("/Ranking/Sort")
+    @ResponseBody
+    public List<Member> sortApiController() {
+        return rankingService.sortMemberByPoint();
+    }
+
+    @GetMapping("/Ranking/Search/{toFind}")
+    @ResponseBody
+    public List<Optional<Member>> searchApiController(@PathVariable(name = "toFind") String toFind) {
+        return rankingService.search(toFind);
+    }
+
+
 }
