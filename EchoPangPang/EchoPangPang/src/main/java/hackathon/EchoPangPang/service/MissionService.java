@@ -52,7 +52,7 @@ public class MissionService {
         LocalDate today = LocalDate.now();
         MissionMap findMission = missionMapRepository.findByIdAndCreatedDate(id, today);
         findMission.setStatus(MissionStatus.COMPLETED);
-        if (stampRepository.findByCreatedDate(today).isPresent()) {
+        if (stampRepository.findByCreatedDate(today).isEmpty()) {
             Stamp newStamp = Stamp.builder()
                     .member(member)
                     .build();
@@ -91,6 +91,24 @@ public class MissionService {
         member.decreasePoint(mission.get().getPoint());
     }
 
+    public void uncheckMissionStatus(Long id, Member member) {
+        LocalDate today = LocalDate.now();
+        MissionMap findMission = missionMapRepository.findByIdAndCreatedDate(id, today);
+        findMission.setStatus(MissionStatus.NOT_STARTED);
+
+        boolean check = false; //하나라도 COMPLETED인 미션이 있으면 true
+        List<MissionMap> todayMission = missionMapRepository.findByCreatedDate(today);
+        for (MissionMap missionMap : todayMission) {
+            if (missionMap.getStatus() == MissionStatus.COMPLETED) {
+                check = true;
+                break;
+            }
+        }
+
+        if (!check) {
+            stampRepository.delete(stampRepository.findByCreatedDate(today).get());
+        }
+    }
 
     /***
      * MissionRepository에서 모든 미션들을 불러와, 3개를 랜덤으로 선택한다.
@@ -129,7 +147,4 @@ public class MissionService {
         return missionMapRepository.findByMemberAndUpdatedDate(member, today);
     }
 
-    public void uncheckMissionStatus(Long id, Member member) {
-
-    }
 }

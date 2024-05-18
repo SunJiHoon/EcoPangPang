@@ -2,12 +2,17 @@ package hackathon.EchoPangPang.service;
 
 import hackathon.EchoPangPang.dto.LoginDTO;
 import hackathon.EchoPangPang.dto.RegisterDTO;
-import hackathon.EchoPangPang.entity.Member;
-import hackathon.EchoPangPang.entity.Puang;
+import hackathon.EchoPangPang.entity.*;
 import hackathon.EchoPangPang.repository.MemberRepository;
+import hackathon.EchoPangPang.repository.MissionMapRepository;
+import hackathon.EchoPangPang.repository.MissionRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +20,13 @@ public class AuthService {
 
     private final MemberRepository memberRepository;
 
+    private final MissionMapRepository missionMapRepository;
+
+    private final MissionRepository missionRepository;
+
     private final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+    private final int DEFAULT_MISSION_COUNT = 3;
 
     // 회원가입 시 사용
     public Member register(RegisterDTO registerDTO) {
@@ -33,6 +44,10 @@ public class AuthService {
                 .build();
         memberRepository.save(member);
 
+        // 미션 할당
+        List<Mission> dailyMissions = getRandomMissions(DEFAULT_MISSION_COUNT);
+        linkMissions(member, dailyMissions);
+
         return member;
     }
 
@@ -48,5 +63,19 @@ public class AuthService {
         return member;
     }
 
+    public List<Mission> getRandomMissions(int count) {
+        return missionRepository.findRandomMissions(PageRequest.of(0, count));
+    }
+
+    public void linkMissions(Member member, List<Mission> dailyMissions) {
+        for (Mission mission : dailyMissions) {
+            MissionMap missionMap = MissionMap.builder()
+                    .member(member)
+                    .mission(mission)
+                    .status(MissionStatus.NOT_STARTED)
+                    .build();
+            missionMapRepository.save(missionMap);
+        }
+    }
 }
 
