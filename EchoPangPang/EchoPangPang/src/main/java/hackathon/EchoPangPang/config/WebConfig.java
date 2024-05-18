@@ -29,7 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
                         "/SignUp",
                         "/LoginPage",
                         "/index",
-                        "/"
+                        "/",
+                        "/api/**"
 
 //                        "/front/dev/**"
 
