@@ -20,7 +20,8 @@
     <ul>
         <li th:each="item, stat : ${todayToDoList}" class="custom-font">
             <label>
-                <input type="checkbox" class="custom-checkbox" th:checked="|${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}|" />
+                <input type="checkbox" class="custom-checkbox"
+                       th:checked="|${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}|"/>
                 <span th:classappend="${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? 'completed'">
 <!--                    <span th:text="'목록 ' + (${stat.index + 1}) + ': ' + ${item.description}"></span>-->
                     <span th:text="${item.description}"></span>
@@ -33,12 +34,12 @@
 
 <div class="divBackground-container">
     <p class="custom-font"><span th:text="|${puangLevel}|"></span></p>
-    <p class="custom-font" style = "font-size: 35px;"><span th:text="|${myPuangName}|"></span></p>
+    <p class="custom-font" style="font-size: 35px;"><span th:text="|${myPuangName}|"></span></p>
 
     <div class="progress">
         <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
     </div>
-    <p id="percentageValue" style = "font-size: 12px; text-align: right;"><span th:text="|${perCentage} %|"></span></p>
+    <p id="percentageValue" style="font-size: 12px; text-align: right;"><span th:text="|${perCentage} %|"></span></p>
 
     <!--    <p><span th:text="|${puangPicture}|"></span></p>-->
     <div style="text-align: center;">
@@ -47,30 +48,30 @@
 
 
     <form id="form3" class="floating-element" action="/Setting" method="get">
-        <button class = "custom-button" type="submit" name="appType" value="setting">
+        <button class="custom-button" type="submit" name="appType" value="setting">
             <img src="/assets/images/nav_setting.png" alt="환경설정" style="width :80px; height: 80px">
         </button>
     </form>
 
     <form id="form2" class="floating-element" action="/Ranking" method="get">
-        <button class = "custom-button" type="submit" name="appType" value="record_app">
+        <button class="custom-button" type="submit" name="appType" value="record_app">
             <img src="/assets/images/nav_awards.png" alt="수상기록 앱" style="width :80px; height: 80px">
         </button>
     </form>
 
     <form id="form1" class="floating-element" action="/Calender" method="get">
-        <button class = "custom-button" type="submit" name="appType" value="calendar">
+        <button class="custom-button" type="submit" name="appType" value="calendar">
             <img src="/assets/images/nav_calender.png" alt="달력" style="width :80px; height: 80px">
         </button>
     </form>
 
-<!--    <form id="form0" class="floating-element" action="/calender" method="post">-->
+    <!--    <form id="form0" class="floating-element" action="/calender" method="post">-->
     <div id="menu-button-container">
-        <button id="menu-button" class = "custom-button" name="appType" value="menu">
+        <button id="menu-button" class="custom-button" name="appType" value="menu">
             <img src="/assets/images/nav_menu.png" alt="메뉴" style="width :80px; height: 80px">
         </button>
     </div>
-<!--    </form>-->
+    <!--    </form>-->
 
 
 </div>

@@ -3,14 +3,11 @@ package hackathon.EchoPangPang.service;
 import hackathon.EchoPangPang.dto.LoginDTO;
 import hackathon.EchoPangPang.dto.RegisterDTO;
 import hackathon.EchoPangPang.entity.Member;
+import hackathon.EchoPangPang.entity.Puang;
 import hackathon.EchoPangPang.repository.MemberRepository;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.ui.Model;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -30,6 +27,8 @@ public class AuthService {
         Member member = Member.builder()
                 .name(registerDTO.getName())
                 .email(registerDTO.getEmail())
+                .point(0)
+                .puang(new Puang("푸앙이", Puang.Grade.EGG))
                 .password(encodedPassword) // 비밀번호 암호화 후 저장
                 .build();
         memberRepository.save(member);

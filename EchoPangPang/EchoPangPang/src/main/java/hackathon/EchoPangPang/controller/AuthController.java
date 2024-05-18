@@ -25,12 +25,12 @@ public class AuthController {
     로그인 페이지
     * */
     @GetMapping("/")
-    String getIndexPage(Model model){
+    String getIndexPage(Model model) {
         return "redirect:/LoginPage";
     }
 
     @GetMapping("/LoginPage")
-    String getLoginPage(Model model){
+    String getLoginPage(Model model) {
         model.addAttribute("loginDTO", new LoginDTO());
         return "LoginPage";
     }
@@ -52,8 +52,8 @@ public class AuthController {
     }
 
     /*
-    * 회원가입 페이지
-    * */
+     * 회원가입 페이지
+     * */
     @GetMapping("/SignUp")
     public String getSignUpForm(Model model) {
         model.addAttribute("registerDTO", new RegisterDTO());
@@ -81,7 +81,6 @@ public class AuthController {
     @GetMapping("/MainPage")
     public String MainPage(Model model) {
         model.addAttribute("todayDate", "5월 17일 금요일");
-        model.addAttribute("myPoint", "10");
 
         List<ToDoItem> todayToDoList = Arrays.asList(
                 new ToDoItem("대중교통 이용하기", MissionStatus.COMPLETED),
@@ -98,17 +97,15 @@ public class AuthController {
         model.addAttribute("perCentage", "95");
 //puangPicture
 //        model.addAttribute("puangPicture", "1");
-        model.addAttribute("puangPicture", "/assets/images/" + "puang4"+ ".png");
+        model.addAttribute("puangPicture", "/assets/images/" + "puang4" + ".png");
         return "MainPage";
     }
-
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();
         return "redirect:/LoginPage";
     }
-
 
 
 }

@@ -2,12 +2,14 @@ package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Embeddable
 @Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Puang {
 
     public enum Grade {
