@@ -1,8 +1,8 @@
 package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
 import java.time.LocalDateTime;
 
 /**
@@ -11,8 +11,10 @@ import java.time.LocalDateTime;
  */
 
 @Entity
-@Data
+@Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +27,7 @@ public class Member {
     @Column(name = "email", nullable = false)
     private String email; // 이메일
 
+    @Setter
     @Column(name = "password", nullable = false)
     private String password; // 비밀번호
 
@@ -34,6 +37,11 @@ public class Member {
     @Embedded
     private Puang puang;
 
-    @Column(name = "created_time",nullable = false)
-    private LocalDateTime created_time = LocalDateTime.now(); // 생성시각인데 필요 없으면 삭제
+    @Column(name = "created_time", nullable = false, updatable = false)
+    private LocalDateTime created_time;
+
+    @PrePersist
+    protected void onCreate() {
+        created_time = LocalDateTime.now();
+    }
 }

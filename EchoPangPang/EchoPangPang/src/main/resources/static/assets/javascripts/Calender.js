@@ -39,7 +39,7 @@ function renderCalendar(date) {
             const stamp = document.createElement('div');
             stamp.classList.add('stamp');
             const img = document.createElement('img');
-            img.src = '/assets/images/puang1.png'; // 이미지 경로 설정
+            img.src = '/assets/images/stamp_outline.png'; // 이미지 경로 설정
             stamp.appendChild(img);
             cell.appendChild(stamp);
         }

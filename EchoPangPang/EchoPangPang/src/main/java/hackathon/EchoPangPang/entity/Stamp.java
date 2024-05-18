@@ -1,8 +1,10 @@
 package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
 
@@ -11,8 +13,9 @@ import java.time.LocalDate;
  * 캘린더에 찍힐 도장 정보를 저장.
  */
 @Entity
-@Data
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class Stamp {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

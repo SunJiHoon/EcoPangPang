@@ -1,37 +1,33 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>로그인 페이지</title>
+    <link rel="stylesheet" href="/assets/stylesheets/Common.css">
 </head>
-<link rel="stylesheet" href="/assets/stylesheets/Common.css">
 <body>
 
-
-
-<div class ="vertical-container">
+<div class="vertical-container">
     <div style="text-align: center;">
         <img src="/assets/images/Transparency.png" alt="투명 이미지" style="max-width: 50%; height: auto;">
-
         <img src="/assets/images/PuangFace.png" alt="푸앙 얼굴 이미지" style="max-width: 70%; height: auto;">
     </div>
-
     <div class="outer-container">
         <div class="login-container">
-
-<!--            <h2>Login</h2>-->
-            <form action="/LoginPage" method="post">
+            <form action="/LoginPage" method="post" th:object="${loginDTO}">
                 <div class="form-group">
-                    <label for="email"> </label>
+                    <label for="email">아이디</label>
                     <div class="outer-container">
-                        <input type="text" id="email" name="email" required placeholder="아이디를 입력해주세요." style="background-color: #5BC2EC;">
+                        <input type="text" th:field="*{email}" id="email" placeholder="아이디를 입력해주세요."
+                               style="background-color: #5BC2EC;" required>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="password"> </label>
+                    <label for="password">비밀번호</label>
                     <div class="outer-container">
-                        <input type="password" id="password" name="password" required placeholder="비밀번호를 입력하세요." style="background-color: #5BC2EC;">
+                        <input type="password" th:field="*{password}" id="password" placeholder="비밀번호를 입력하세요."
+                               style="background-color: #5BC2EC;" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -39,28 +35,22 @@
                         <button type="submit">로그인</button>
                     </div>
                 </div>
+                <div th:if="${error}" class="error-message" th:text="${error}"></div>
             </form>
             <div class="outer-container">
-<!--                <button type="submit">회원가입</button>-->
                 <form action="/SignUp" method="get">
-                    <!-- 기타 폼 요소들 -->
-                    <button type="submit" class="register-link">&nbsp;회원가입&nbsp;&nbsp;</button>
+                    <button type="submit" class="register-link">&nbsp;회원가입해서 시작하기&nbsp;&nbsp;</button>
                 </form>
-<!--                <p>|</p>-->
-                <form action="/findId" method="get">
-                    <!-- 기타 폼 요소들 -->
-                    <button type="submit" class="register-link">아이디 찾기&nbsp;&nbsp;</button>
-                </form>
-<!--                <p>|</p>-->
-                <form action="/findPassword" method="get">
-                    <!-- 기타 폼 요소들 -->
-                    <button type="submit" class="register-link">비밀번호 찾기</button>
-                </form>
+                <!--                <form action="/findId" method="get">-->
+                <!--                    <button type="submit" class="register-link">아이디 찾기&nbsp;&nbsp;</button>-->
+                <!--                </form>-->
+                <!--                <form action="/findPassword" method="get">-->
+                <!--                    <button type="submit" class="register-link">비밀번호 찾기</button>-->
+                <!--                </form>-->
             </div>
-
         </div>
     </div>
 </div>
-<!--</div>-->
+
 </body>
 </html>

@@ -1,14 +1,16 @@
 package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /**
  * Mission 엔티티 클래스.
  * 미션 자체의 정보를 저장
  */
 @Entity
-@Data
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 public class Mission {
@@ -22,4 +24,5 @@ public class Mission {
 
     @Column(name = "content", nullable = false)
     private String content; // 미션 내용
+
 }

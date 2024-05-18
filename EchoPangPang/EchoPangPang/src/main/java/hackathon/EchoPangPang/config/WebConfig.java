@@ -29,9 +29,8 @@ public class WebConfig implements WebMvcConfigurer {
                         "/SignUp",
                         "/LoginPage",
                         "/index",
-                        "/"
-
-//                        "/front/dev/**"
+                        "/",
+                        "/api/**"
 
                         ); // 특정 경로는 제외
     }
