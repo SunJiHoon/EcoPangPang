@@ -1,0 +1,43 @@
+/*<style>*/
+body {
+    font-family: Arial, sans-serif;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
+    height: 100vh;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+/*<style>*/
+@font-face {
+    font-family: MyCustomFont;
+    src: url('/assets/ttfs/JalnanGothicTTF.ttf');
+}
+/* Define font class */
+.custom-font {
+    font-family: MyCustomFont, sans-serif;
+    font-size: 25px;
+}
+
+.background-container {
+    background-image: url('/assets/images/background.jpg'); /* 배경 이미지 경로 */
+}
+.outer-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.white-container{
+    width: 320px;
+    height : 320px;
+    /*background-color: #fff;*/
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*</style>*/
