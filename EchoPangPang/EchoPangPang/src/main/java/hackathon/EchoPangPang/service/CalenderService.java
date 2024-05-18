@@ -14,16 +14,16 @@ import java.util.List;
 public class CalenderService {
     private final MissionMapRepository missionMapRepository;
 
-    public List<MissionMap> missionsOfDay(String date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
-
-        LocalDate localDate = LocalDate.parse(date, formatter);
-        return missionMapRepository.findByCreatedAt(localDate);
-    }
-
-    public List<MissionMap> missionsOfToday() {
-        LocalDate today = LocalDate.now();
-
-        return missionMapRepository.findByCreatedAt(today);
-    }
+//    public List<MissionMap> missionsOfDay(String date) {
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
+//
+//        LocalDate localDate = LocalDate.parse(date, formatter);
+////        return missionMapRepository.findByCreatedAt(localDate);
+//    }
+//
+//    public List<MissionMap> missionsOfToday() {
+//        LocalDate today = LocalDate.now();
+//
+////        return missionMapRepository.findByCreatedAt(today);
+//    }
 }
