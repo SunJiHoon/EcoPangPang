@@ -34,14 +34,24 @@ public class MemberService {
         }
 
         //멤버 포인트
-        //멤버 포인트를 체크하고, 그에 따라 Puang 상태를 반영해야한다
+        //멤버의 전체 포인트
         int point = member.getPoint();
 
-        // percentage -> point 값에 따라, 다음 진화까지 진행도를 나타낸다.
+        //멤버 포인트를 체크하고, 그에 따라 Puang 상태를 반영해야한다
+        setPuangGrade(member, point);
+
+
+        //현재 멤버의 푸앙이 레벨에 따라, 다음 레벨까지의 maxPoint를 얻는다.
         int maxPointsForNextLevel = getMaxPointsForNextLevel(member.getPuang().getGrade());
 
+        //멤버 포인트를 체크하고, 그에 따라 Puang 상태를 반영해야한다
+        //현재 다음 level까지의 진화까지, 현재 포인트 상황
+//        int currentPointForNextLevel = 0;
+
         // percentage 계산
+        // percentage -> point 값에 따라, 다음 진화까지 진행도를 나타낸다.
         int percentage = (point * 100) / maxPointsForNextLevel;
+
 
         //푸앙이 정보 (이름, 레벨 명, 푸앙이 사진)
         String myPuangName = member.getPuang().getName();
@@ -91,6 +101,22 @@ public class MemberService {
                 .todayDate(today.format(formatter))
                 .build();
 
+    }
+
+    private void setPuangGrade(Member member, int point) {
+        if (point >= 0 && point <= 5) {
+            member.getPuang().setGrade(Puang.Grade.EGG);
+        } else if (point >= 6 && point <= 10) {
+            member.getPuang().setGrade(Puang.Grade.BABY);
+        } else if (point >= 11 && point <= 15) {
+            member.getPuang().setGrade(Puang.Grade.CHILD);
+        } else if (point >= 16 && point <= 25) {
+            member.getPuang().setGrade(Puang.Grade.TEENAGER);
+        } else if (point >= 26 && point <= 35) {
+            member.getPuang().setGrade(Puang.Grade.ADULT);
+        } else {
+            member.getPuang().setGrade(Puang.Grade.GUARDIAN);
+        }
     }
 
     // 다음 레벨에 필요한 점수를 얻는 메서드
