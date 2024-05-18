@@ -22,6 +22,6 @@ class RankingServiceTest {
 
     @Test
     void search() {
-        System.out.println("rankingService = " + rankingService.search("can2@can2").get(0).get().getName());
+        System.out.println("rankingService = " + rankingService.search("선지훈"));
     }
 }

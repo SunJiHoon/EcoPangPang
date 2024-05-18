@@ -103,24 +103,4 @@ public class AuthController {
         return "MainPage";
     }
 
-
-    @GetMapping("/Setting")
-    public String getSettingPage() {
-        return "Setting";
-    }
-    @GetMapping("/Ranking")
-    public String getAwardPage(){
-        return "Ranking";
-    }
-    @GetMapping("/Calender")
-    public String getCalenderPage() {
-        return "Calender";
-    }
-
-    @GetMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "redirect:/LoginPage";
-    }
-
 }
