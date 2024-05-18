@@ -112,3 +112,18 @@ button:hover {
 .result:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.rank {
+    font-family: 'Arial', sans-serif; /* 순위에 적용할 글꼴 */
+}
+
+.name {
+    font-family: 'Courier New', monospace; /* 이름에 적용할 글꼴 */
+}
+
+.point {
+    font-family: 'Times New Roman', serif; /* 포인트에 적용할 글꼴 */
+}
+
+.grade {
+    font-family: 'Verdana', sans-serif; /* 등급에 적용할 글꼴 */
+}

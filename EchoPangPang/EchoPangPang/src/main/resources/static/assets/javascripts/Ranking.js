@@ -31,7 +31,6 @@ function search() {
         alert('검색어를 입력하세요.');
     }
 }
-
 function displayResults(data) {
     var resultsContainer = document.getElementById('results');
     resultsContainer.innerHTML = ''; // 기존 결과를 초기화
@@ -41,7 +40,27 @@ function displayResults(data) {
         data.forEach((result, index) => {
             var resultElement = document.createElement('div');
             resultElement.classList.add('result');
-            resultElement.textContent = `순위: ${index + 1}, 이름: ${result.name}, 포인트: ${result.point}, 등급: ${result.puangGrade}`;
+
+            var rankElement = document.createElement('span');
+            rankElement.classList.add('rank');
+            rankElement.textContent = `순위: ${index + 1}, `;
+            resultElement.appendChild(rankElement);
+
+            var nameElement = document.createElement('span');
+            nameElement.classList.add('name');
+            nameElement.textContent = `이름: ${result.name}, `;
+            resultElement.appendChild(nameElement);
+
+            var pointElement = document.createElement('span');
+            pointElement.classList.add('point');
+            pointElement.textContent = `포인트: ${result.point}, `;
+            resultElement.appendChild(pointElement);
+
+            var gradeElement = document.createElement('span');
+            gradeElement.classList.add('grade');
+            gradeElement.textContent = `등급: ${result.puangGrade}`;
+            resultElement.appendChild(gradeElement);
+
             resultsContainer.appendChild(resultElement);
         });
     } else {
