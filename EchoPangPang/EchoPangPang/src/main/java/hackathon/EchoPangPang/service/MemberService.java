@@ -29,7 +29,8 @@ public class MemberService {
         //missionMapList에서 미션 명, 미션 상태 추출해서 toDoItemList 만들기
         List<ToDoItem> toDoItemList = new ArrayList<>();
         for (MissionMap missionMap : missionMapList) {
-            toDoItemList.add(new ToDoItem(missionMap.getMission().getContent(), missionMap.getStatus()));
+            toDoItemList.add(new ToDoItem(missionMap.getMission().getId(),
+                    missionMap.getMission().getContent(), missionMap.getStatus()));
         }
 
         //멤버 포인트
