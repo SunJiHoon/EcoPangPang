@@ -33,6 +33,7 @@ public class AuthService {
                 .name(registerDTO.getName())
                 .email(registerDTO.getEmail())
                 .password(encodedPassword) // 비밀번호 암호화 후 저장
+                .point(0)  // 가지고 있는 포인트, 기본값 0
                 .puang(new Puang("푸앙이", Puang.Grade.EGG))
                 .build();
         memberRepository.save(member);

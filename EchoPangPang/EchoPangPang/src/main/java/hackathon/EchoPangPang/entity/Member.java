@@ -32,7 +32,7 @@ public class Member {
     private String password; // 비밀번호
 
     @Column(name = "point", nullable = false)
-    private int point = 0; // 가지고 있는 포인트, 기본값 0
+    private int point;
 
     @Embedded
     private Puang puang;
