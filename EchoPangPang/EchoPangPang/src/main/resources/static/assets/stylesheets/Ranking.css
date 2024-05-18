@@ -72,6 +72,15 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
+
+    font-weight: bold;
+    /*padding: 10px;*/
+    margin-bottom: 10px;
+    /*border-bottom: 2px solid #000;*/
+    text-align: center; /* 가운데 정렬 추가 */
+    /*display: flex; !* 플렉스 컨테이너로 변경 *!*/
+    justify-content: space-between; /* 요소들 사이 공간 분배 */
+
 }
 
 /*</style>*/
@@ -99,4 +108,65 @@ button:hover {
     background-color: transparent; /* 버튼의 배경색을 투명하게 설정합니다. */
     border: none; /* 버튼의 테두리를 제거합니다. */
     padding: 0; /* 버튼의 여백을 제거합니다. */
+}
+
+
+.rank {
+    font-family: MyCustomFont, 'Arial', sans-serif; /* 순위에 적용할 글꼴 */
+    font-size: 25px;
+    flex: 1; /* flex 요소의 비율 설정 */
+    text-align: left; /* 왼쪽 정렬 */
+
+}
+
+.name {
+    font-family: MyCustomFont, 'Courier New', monospace; /* 이름에 적용할 글꼴 */
+    font-size: 25px;
+    flex: 2; /* flex 요소의 비율 설정 */
+    text-align: center; /* 가운데 정렬 */
+
+}
+
+.point {
+    font-family: MyCustomFont, 'Times New Roman', serif; /* 포인트에 적용할 글꼴 */
+    font-size: 25px;
+    flex: 1; /* flex 요소의 비율 설정 */
+    text-align: right; /* 오른쪽 정렬 */
+
+}
+
+.grade {
+    font-family: MyCustomFont, 'Verdana', sans-serif; /* 등급에 적용할 글꼴 */
+    font-size: 25px;
+
+}
+/* 순위에 따른 스타일 */
+.rank-1 {
+    color: gold;
+    font-size: 24px; /* 1등 크기 */
+}
+
+.rank-2 {
+    color: silver;
+    font-size: 20px; /* 2등 크기 */
+}
+
+.rank-3 {
+    color: bronze;
+    font-size: 18px; /* 3등 크기 */
+}
+/* 헤더 스타일 */
+.header {
+    font-weight: bold;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #000;
+    text-align: center; /* 가운데 정렬 추가 */
+}
+/* content div 스타일 */
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }

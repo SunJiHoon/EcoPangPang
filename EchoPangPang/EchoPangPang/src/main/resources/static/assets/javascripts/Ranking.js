@@ -36,11 +36,46 @@ function displayResults(data) {
     var resultsContainer = document.getElementById('results');
     resultsContainer.innerHTML = ''; // 기존 결과를 초기화
 
+    // 헤더 추가
+    var headerElement = document.createElement('div');
+    headerElement.classList.add('header');
+    headerElement.innerHTML = `<span class="rank">순위&nbsp;&nbsp;</span> <span></span> <span class="name">이름&nbsp;&nbsp;</span> <span></span> <span class="point">포인트</span>`;
+    resultsContainer.appendChild(headerElement);
+
     if (data && data.length > 0) {
-        data.forEach(result => {
+        data.forEach((result, index) => {
             var resultElement = document.createElement('div');
             resultElement.classList.add('result');
-            resultElement.textContent = `이름: ${result.name}, 포인트: ${result.point}, 등급: ${result.puangGrade}`; // 결과의 제목 표시 (적절히 수정 필요)
+
+            var contentElement = document.createElement('div'); // 새로운 div 생성
+            contentElement.classList.add('content'); // 필요한 클래스 추가
+
+            // 순위에 따라 다른 클래스 적용
+            var rankClass = '';
+            if (index === 0) {
+                rankClass = 'rank-1';
+            } else if (index === 1) {
+                rankClass = 'rank-2';
+            } else if (index === 2) {
+                rankClass = 'rank-3';
+            }
+
+            var rankElement = document.createElement('span');
+            rankElement.classList.add('rank', rankClass);
+            rankElement.textContent = `  ${index + 1}`;
+            contentElement.appendChild(rankElement);
+
+            var nameElement = document.createElement('span');
+            nameElement.classList.add('name');
+            nameElement.textContent = `  ${result.name}`;
+            contentElement.appendChild(nameElement);
+
+            var pointElement = document.createElement('span');
+            pointElement.classList.add('point');
+            pointElement.textContent = `  ${result.point}  `;
+            contentElement.appendChild(pointElement);
+
+            resultElement.appendChild(contentElement);
             resultsContainer.appendChild(resultElement);
         });
     } else {
