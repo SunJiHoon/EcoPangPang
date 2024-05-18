@@ -82,6 +82,10 @@ body {
     height: auto;
     border-radius: 50%;
 }
+img.stamp-image {
+    pointer-events: none;
+}
+
 .white-container{
     width: 320px;
     height : 320px;
