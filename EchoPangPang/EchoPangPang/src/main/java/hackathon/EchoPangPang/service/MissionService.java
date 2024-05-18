@@ -37,11 +37,20 @@ public class MissionService {
     @Scheduled(cron = "0 0 0 * * *")
     public void updateDailyMissions() {
         // Logic to update missions for each member
+        System.out.println("스케줄러 등록");
         List<Member> members = memberRepository.findAll();
         for (Member member : members) {
             updateMissionForMember(member);
         }
     }
+
+//    /**
+//     * 서버가 시작될 때 실행된다.
+//     */
+//    @PostConstruct
+//    public void init() {
+//        updateDailyMissions();
+//    }
 
     /***
      * MissionRepository에서 모든 미션들을 불러와, 3개를 랜덤으로 선택한다.
@@ -76,9 +85,7 @@ public class MissionService {
      * @return
      */
     public List<MissionMap> getTodayToDoList(Member member, LocalDate today) {
-//        missionMapRepository.findByMemberAndCreatedAtBetween(member, )
 
-//        missionMapRepository.findByMemberAndCreatedAt(member, today);
-        return null;
+        return missionMapRepository.findByMemberAndUpdatedDate(member, today);
     }
 }
