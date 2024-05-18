@@ -12,5 +12,5 @@ import java.util.Optional;
 @Repository
 public interface CodeRepository extends JpaRepository<Code, Long> {
     // 이메일로 코드 찾아줌
-    String findCodeByEmail(String email);
+    Optional<Code> findCodeByEmail(String email);
 }
