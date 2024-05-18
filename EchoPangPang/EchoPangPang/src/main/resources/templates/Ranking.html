@@ -17,9 +17,12 @@
 
 <div class = "outer-cont">
     <div class ="white-container">
-        <p>
-            검색창
-        </p>
+<!--        <p>-->
+<!--            검색창-->
+<!--        </p>-->
+        <label for="searchInput"></label>
+        <input type="text" id="searchInput" placeholder="사용자 이름 또는 이메일을 검색하세요.">
+        <button onclick="search()">검색</button>
     </div>
 </div>
 
@@ -30,9 +33,9 @@
 
 <div class = "outer-cont">
     <div class ="white-container">
-        <p>
-            가나다
-        </p>
+        <div id="results">
+
+        </div>
     </div>
 </div>
 <script src="/assets/javascripts/Ranking.js"></script>
