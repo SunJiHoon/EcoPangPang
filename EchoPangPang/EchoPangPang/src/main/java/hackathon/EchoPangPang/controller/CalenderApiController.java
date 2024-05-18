@@ -1,7 +1,9 @@
 package hackathon.EchoPangPang.controller;
 
 import hackathon.EchoPangPang.dto.CalenderDTO;
+import hackathon.EchoPangPang.dto.StampDTO;
 import hackathon.EchoPangPang.service.CalenderService;
+import hackathon.EchoPangPang.service.StampService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,9 @@ public class CalenderApiController {
     @Autowired
     CalenderService calenderService;
 
+    @Autowired
+    StampService stampService;
+
     @GetMapping("/Calender/day/{date}")
     @ResponseBody
     public List<CalenderDTO> missionOfDayController(@PathVariable(name = "date") String date) {
@@ -24,6 +29,12 @@ public class CalenderApiController {
     @ResponseBody
     public List<CalenderDTO> missionOfTodayController() {
         return calenderService.missionsOfToday();
+    }
+
+    @GetMapping("/Calender/month/{yearMonth}")
+    @ResponseBody
+    public List<StampDTO> stampOfMonth(@PathVariable(name = "yearMonth") String yearMonth) {
+        return stampService.stampsOfMonth(yearMonth);
     }
 
 }

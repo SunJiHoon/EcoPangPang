@@ -1,12 +1,10 @@
 package hackathon.EchoPangPang.service;
 
-import hackathon.EchoPangPang.entity.Member;
-import hackathon.EchoPangPang.entity.Mission;
-import hackathon.EchoPangPang.entity.MissionMap;
-import hackathon.EchoPangPang.entity.MissionStatus;
+import hackathon.EchoPangPang.entity.*;
 import hackathon.EchoPangPang.repository.MemberRepository;
 import hackathon.EchoPangPang.repository.MissionMapRepository;
 import hackathon.EchoPangPang.repository.MissionRepository;
+import hackathon.EchoPangPang.repository.StampRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +18,15 @@ public class MissionService {
     private final MemberRepository memberRepository;
     private final MissionRepository missionRepository;
     private final MissionMapRepository missionMapRepository;
+    private final StampRepository stampRepository;
 
     @Autowired
     public MissionService(MemberRepository memberRepository,
-                          MissionRepository missionRepository, MissionMapRepository missionMapRepository) {
+                          MissionRepository missionRepository, MissionMapRepository missionMapRepository, StampRepository stampRepository) {
         this.memberRepository = memberRepository;
         this.missionRepository = missionRepository;
         this.missionMapRepository = missionMapRepository;
+        this.stampRepository = stampRepository;
     }
 
     /***
@@ -50,6 +50,18 @@ public class MissionService {
 //    public void init() {
 //        updateDailyMissions();
 //    }
+
+    public void checkMissionStatus(Long id, Member member) {
+        LocalDate today = LocalDate.now();
+        MissionMap findMission = missionMapRepository.findByIdAndCreatedDate(id, today);
+        findMission.setStatus(MissionStatus.COMPLETED);
+        if (stampRepository.findByCreatedDate(today).isPresent()) {
+            Stamp newStamp = Stamp.builder()
+                    .member(member)
+                    .build();
+            stampRepository.save(newStamp);
+        }
+    }
 
     /***
      * MissionRepository에서 모든 미션들을 불러와, 3개를 랜덤으로 선택한다.

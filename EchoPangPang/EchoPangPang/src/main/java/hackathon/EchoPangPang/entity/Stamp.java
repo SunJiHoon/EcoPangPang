@@ -11,9 +11,9 @@ import java.time.LocalDate;
  * 캘린더에 찍힐 도장 정보를 저장.
  */
 @Entity
-@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@Builder
 public class Stamp extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
