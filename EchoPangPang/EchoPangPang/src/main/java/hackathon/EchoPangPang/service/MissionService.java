@@ -50,7 +50,7 @@ public class MissionService {
 
     public void checkMissionStatus(Long id, Member member) {
         LocalDate today = LocalDate.now();
-        MissionMap findMission = missionMapRepository.findByIdAndCreatedDate(id, today);
+        MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(missionRepository.findById(id).get(), today);
         findMission.setStatus(MissionStatus.COMPLETED);
         if (stampRepository.findByCreatedDate(today).isEmpty()) {
             Stamp newStamp = Stamp.builder()
@@ -93,7 +93,7 @@ public class MissionService {
 
     public void uncheckMissionStatus(Long id, Member member) {
         LocalDate today = LocalDate.now();
-        MissionMap findMission = missionMapRepository.findByIdAndCreatedDate(id, today);
+        MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(missionRepository.findById(id).get(), today);
         findMission.setStatus(MissionStatus.NOT_STARTED);
 
         boolean check = false; //하나라도 COMPLETED인 미션이 있으면 true
