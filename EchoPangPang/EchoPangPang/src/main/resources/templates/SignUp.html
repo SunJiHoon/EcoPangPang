@@ -39,6 +39,14 @@
                 <div class="outer-container">
                     <button type="button" id="emailVerificationButton" onclick="sendEmailVerification()">이메일 보내기</button>
                 </div>
+                <div id="emailVerificationCodeInput" style="display: none;">
+                    <div class="form-group">
+                        <label for="emailVerificationCode">이메일 인증 코드</label>
+                        <div class="outer-container">
+                            <input type="text" id="emailVerificationCode" placeholder="인증 코드 입력">
+                        </div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label for="password">비밀번호</label>
                     <div class="outer-container">
@@ -53,7 +61,7 @@
                 </div>
                 <div class="form-group">
                     <div class="outer-container">
-                        <input type="submit" value="가입하기">
+                        <input type="submit" id="submitButton" value="가입하기">
                     </div>
                 </div>
                 <div th:if="${error}" class="error-message" th:text="${error}"></div>
