@@ -1,12 +1,31 @@
 /*<style>*/
 body {
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    /*display: flex;*/
+    /*justify-content: center;*/
+    /*align-items: center;*/
     height: 100vh;
     margin: 0;
     background-color: #f4f4f4;
+}
+/*<style>*/
+@font-face {
+    font-family: MyCustomFont;
+    src: url('/assets/ttfs/JalnanGothicTTF.ttf');
+}
+/* Define font class */
+.custom-font {
+    font-family: MyCustomFont, sans-serif;
+    font-size: 25px;
+}
+
+.background-container {
+    background-image: url('/assets/images/background.jpg'); /* 배경 이미지 경로 */
+}
+.outer-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .calendar {
     width: 300px;
@@ -52,16 +71,25 @@ body {
     right: 0px;
     width: 10px;
     height: 10px;
-    background-color: #28a745;
+    /*background-color: #28a745;*/
     border-radius: 50%;
 }
 .stamp img {
     position: absolute;
-    top: -40px;
-    right: -30px;
+    top: -25px;
+    right: -27px;
     width: 50px; /* 이미지의 크기 조절 가능 */
     height: auto;
     border-radius: 50%;
 }
-
+.white-container{
+    width: 320px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 /*</style>*/
