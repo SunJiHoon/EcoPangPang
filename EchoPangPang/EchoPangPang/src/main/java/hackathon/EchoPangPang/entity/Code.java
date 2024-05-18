@@ -6,6 +6,7 @@ import lombok.*;
 
 @Entity
 @Getter
+@Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
@@ -14,6 +15,6 @@ public class Code extends BaseEntity {
     @Column(name = "email", nullable = false)
     private String email;
 
-    @Column(name = "code", nullable = false)
+    @Column(name = "code_umber", nullable = false)
     private String codeNumber;
 }

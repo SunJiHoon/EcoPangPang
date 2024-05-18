@@ -10,6 +10,9 @@ import java.util.List;
 
 @Repository
 public interface MissionMapRepository extends JpaRepository<MissionMap, Long> {
+
     List<MissionMap> findByMemberAndUpdatedDate(Member member, LocalDate today);
-//    List<MissionMap> findByMemberAndCreatedAt(Member member, LocalDate today);
+
+    List<MissionMap> findByCreatedDate(LocalDate date);
+
 }
