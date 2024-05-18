@@ -63,6 +63,7 @@ public class MissionService {
         MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(mission, today);
         if (findMission != null) {
             findMission.setStatus(MissionStatus.COMPLETED);
+            missionMapRepository.save(findMission);
 
             if (stampRepository.findByCreatedDate(today).isEmpty()) {
                 Stamp newStamp = Stamp.builder()
@@ -87,6 +88,7 @@ public class MissionService {
             throw new Exception("Mission not found");
         }
         member.increasePoint(mission.get().getPoint());
+        memberRepository.save(member);
     }
 
     /***
@@ -102,12 +104,14 @@ public class MissionService {
             throw new Exception("Mission not found");
         }
         member.decreasePoint(mission.get().getPoint());
+        memberRepository.save(member);
     }
 
     public void uncheckMissionStatus(Long id, Member member) {
         LocalDate today = LocalDate.now();
         MissionMap findMission = missionMapRepository.findByMissionAndCreatedDate(missionRepository.findById(id).get(), today);
         findMission.setStatus(MissionStatus.NOT_STARTED);
+        missionMapRepository.save(findMission);
 
         boolean check = false; //하나라도 COMPLETED인 미션이 있으면 true
         List<MissionMap> todayMission = missionMapRepository.findByCreatedDate(today);
