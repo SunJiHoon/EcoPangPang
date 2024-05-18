@@ -79,7 +79,6 @@ public class MissionService {
     public List<MissionMap> getTodayToDoList(Member member, LocalDate today) {
 //        missionMapRepository.findByMemberAndCreatedAtBetween(member, )
 
-        missionMapRepository.findByMemberAndCreatedAt(member, today);
-        return null;
+        return missionMapRepository.findByMemberAndCreatedAt(member, today);
     }
 }
