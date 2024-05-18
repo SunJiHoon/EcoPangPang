@@ -28,13 +28,16 @@ public class MissionController {
         //체크박스 누르면, 사용자 포인트 증가
         missionService.checkMissionPoint(id, member);
 
-
         return ResponseEntity.ok().build();
     }
 
     @PatchMapping("/uncheck")
-    public ResponseEntity<?> uncheckBox() {
+    public ResponseEntity<?> uncheckBox(Long id, HttpServletRequest request) throws Exception {
+        HttpSession session = request.getSession();
+        Member member = (Member) session.getAttribute("member");
 
+        missionService.uncheckMissionStatus(id, member);
+        missionService.uncheckMissionPoint(id, member);
         return ResponseEntity.ok().build();
     }
 

@@ -73,8 +73,24 @@ public class MissionService {
         if (mission.isEmpty()) {
             throw new Exception("Mission not found");
         }
-        member.updatePoint(mission.get().getPoint());
+        member.increasePoint(mission.get().getPoint());
     }
+
+    /***
+     * mission id로 미션 조회
+     * 미션에 배정된 포인트만큼 사용자 포인트 감소시키키
+     * @param id
+     * @param member
+     * @throws Exception
+     */
+    public void uncheckMissionPoint(Long id, Member member) throws Exception {
+        Optional<Mission> mission = missionRepository.findById(id);
+        if (mission.isEmpty()) {
+            throw new Exception("Mission not found");
+        }
+        member.decreasePoint(mission.get().getPoint());
+    }
+
 
     /***
      * MissionRepository에서 모든 미션들을 불러와, 3개를 랜덤으로 선택한다.
@@ -111,5 +127,9 @@ public class MissionService {
     public List<MissionMap> getTodayToDoList(Member member, LocalDate today) {
 
         return missionMapRepository.findByMemberAndUpdatedDate(member, today);
+    }
+
+    public void uncheckMissionStatus(Long id, Member member) {
+
     }
 }

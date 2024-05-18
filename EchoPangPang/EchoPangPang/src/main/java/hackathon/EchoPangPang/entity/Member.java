@@ -36,7 +36,11 @@ public class Member extends BaseEntity {
     @Embedded
     private Puang puang;
 
-    public void updatePoint(int point) {
+    public void increasePoint(int point) {
+        this.point += point;
+    }
+
+    public void decreasePoint(int point) {
         this.point += point;
     }
 }
