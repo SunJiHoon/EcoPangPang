@@ -1,5 +1,6 @@
 package hackathon.EchoPangPang.entity;
 
+import hackathon.EchoPangPang.base.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,10 +13,10 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 @Builder
-public class Member {
+public class Member extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
@@ -32,16 +33,8 @@ public class Member {
     private String password; // 비밀번호
 
     @Column(name = "point", nullable = false)
-    private int point = 0; // 가지고 있는 포인트, 기본값 0
+    private int point; // 가지고 있는 포인트, 기본값 0
 
     @Embedded
     private Puang puang;
-
-    @Column(name = "created_time", nullable = false, updatable = false)
-    private LocalDateTime created_time;
-
-    @PrePersist
-    protected void onCreate() {
-        created_time = LocalDateTime.now();
-    }
 }

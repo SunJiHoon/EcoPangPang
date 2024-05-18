@@ -1,10 +1,8 @@
 package hackathon.EchoPangPang.entity;
 
+import hackathon.EchoPangPang.base.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -14,9 +12,9 @@ import java.time.LocalDate;
  */
 @Entity
 @Setter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Stamp {
+public class Stamp extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "stamp_id")
@@ -26,6 +24,4 @@ public class Stamp {
     @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
-    @Column(name = "created_date", nullable = false)
-    private LocalDate created_date;
 }

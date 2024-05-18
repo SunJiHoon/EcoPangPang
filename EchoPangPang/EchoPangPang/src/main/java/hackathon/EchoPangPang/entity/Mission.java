@@ -1,6 +1,9 @@
 package hackathon.EchoPangPang.entity;
 
+import com.fasterxml.jackson.databind.ser.Serializers;
+import hackathon.EchoPangPang.base.BaseEntity;
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +14,9 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class Mission {
+public class Mission extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mission_id")
