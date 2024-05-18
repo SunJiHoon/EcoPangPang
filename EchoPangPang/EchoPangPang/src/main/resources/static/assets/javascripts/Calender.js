@@ -81,13 +81,14 @@ calendarBody.addEventListener('click', (event) => {
 
         // 클릭한 날짜로 쿼리 생성
         const formattedDate = `${String(year).slice(-2)}-${month.toString().padStart(2, '0')}-${clickedDate.padStart(2, '0')}`;
-        const url = `/api/data?date=${formattedDate}`;
+        const url = `/api/Calender/day/${formattedDate}`;
 
         // 생성된 쿼리를 사용하여 GET 요청 보내기
         fetch(url)
             .then(response => response.json())
             .then(data => {
                 // 처리할 작업 수행
+                console.log(data);
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -95,6 +96,6 @@ calendarBody.addEventListener('click', (event) => {
             });
 
         // 클릭한 날짜를 출력
-        alert(`${year}년 ${month}월 ${clickedDate}일`);
+        // alert(`${year}년 ${month}월 ${clickedDate}일`);
     }
 });
