@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,6 +30,7 @@ public class AuthService {
     private final int DEFAULT_MISSION_COUNT = 3;
 
     // 회원가입 시 사용
+    @Transactional
     public Member register(RegisterDTO registerDTO) {
 
         if (memberRepository.findByEmail(registerDTO.getEmail()).isPresent()) {
@@ -67,6 +69,7 @@ public class AuthService {
         return missionRepository.findRandomMissions(PageRequest.of(0, count));
     }
 
+    @Transactional
     public void linkMissions(Member member, List<Mission> dailyMissions) {
         for (Mission mission : dailyMissions) {
             MissionMap missionMap = MissionMap.builder()
