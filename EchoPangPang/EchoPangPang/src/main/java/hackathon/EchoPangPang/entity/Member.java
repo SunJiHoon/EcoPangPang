@@ -41,6 +41,6 @@ public class Member extends BaseEntity {
     }
 
     public void decreasePoint(int point) {
-        this.point += point;
+        this.point -= point;
     }
 }
