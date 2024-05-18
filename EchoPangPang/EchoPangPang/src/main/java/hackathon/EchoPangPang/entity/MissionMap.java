@@ -18,7 +18,6 @@ import lombok.Getter;
 @IdClass(MissionMapPK.class)
 @Getter
 public class MissionMap {
-
     @Id
     @Column(name = "member_id", insertable = false, updatable = false)
     private Long memberId;

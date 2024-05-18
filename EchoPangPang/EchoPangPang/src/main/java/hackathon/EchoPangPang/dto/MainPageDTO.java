@@ -17,4 +17,5 @@ public class MainPageDTO {
     private String myPuangName;
     private String myPuangLevel;
     private String puangPicture;
+    private String todayDate;
 }

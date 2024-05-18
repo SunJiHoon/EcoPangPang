@@ -5,21 +5,23 @@ import hackathon.EchoPangPang.dto.MainPageDTO;
 import hackathon.EchoPangPang.dto.ToDoItem;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionMap;
-import org.springframework.beans.factory.annotation.Autowired;
+import hackathon.EchoPangPang.repository.MemberRepository;
+import hackathon.EchoPangPang.repository.MissionMapRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class MemberService {
 
     private final MissionService missionService;
-
-    @Autowired
-    public MemberService(MissionService missionService) {
-        this.missionService = missionService;
-    }
+    private final MissionMapRepository missionMapRepository;
+    private final MemberRepository memberRepository;
 
 
     public MainPageDTO getMainPageInfo(Member member) {
@@ -84,6 +86,10 @@ public class MemberService {
                 throw new IllegalStateException("Unexpected value: " + member.getPuang().getGrade());
         }
 
+        //오늘 날짜 가져오기
+        LocalDate today = LocalDate.now();
+        //원하는 형식으로 포맷팅
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
         return MainPageDTO.builder()
                 .todayToDoList(toDoItemList)
@@ -92,6 +98,7 @@ public class MemberService {
                 .myPuangLevel(myPuangLevel)
                 .puangPicture(puangPicture)
                 .percentage(percentage)
+                .todayDate(today.format(formatter))
                 .build();
 
     }
