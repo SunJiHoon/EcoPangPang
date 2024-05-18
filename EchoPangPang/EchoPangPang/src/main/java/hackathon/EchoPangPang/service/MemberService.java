@@ -26,7 +26,7 @@ public class MemberService {
 
     public MainPageDTO getMainPageInfo(Member member) {
 
-        //missionMapList
+        //missionMapList, 오늘 날짜를 반영해서 List<Mission>을 받아와야함.
         List<MissionMap> missionMapList = missionService.getTodayToDoList(member);
 
         //missionMapList에서 미션 명, 미션 상태 추출해서 toDoItemList 만들기

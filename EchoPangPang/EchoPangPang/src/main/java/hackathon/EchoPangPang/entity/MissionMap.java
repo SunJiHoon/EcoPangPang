@@ -2,6 +2,9 @@ package hackathon.EchoPangPang.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 /**
  * MissionMap 엔티티 클래스.
@@ -15,16 +18,20 @@ import lombok.Getter;
  * 단점: 엔티티 간의 관계를 명시적으로 표현하지 못함, 추가 쿼리가 필요할 수 있음.
  */
 @Entity
-@IdClass(MissionMapPK.class)
 @Getter
+@NoArgsConstructor
 public class MissionMap {
-    @Id
-    @Column(name = "member_id", insertable = false, updatable = false)
-    private Long memberId;
+//    @Id
+//    @Column(name = "member_id", insertable = false, updatable = false)
+//    private Long memberId;
+//
+//    @Id
+//    @Column(name = "mission_id", insertable = false, updatable = false)
+//    private Long missionId;
 
     @Id
-    @Column(name = "mission_id", insertable = false, updatable = false)
-    private Long missionId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "member", nullable = false) // member 객체
@@ -36,7 +43,10 @@ public class MissionMap {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
-    private MissionStatus status; // enum, mission의 상태
+    private MissionStatus status = MissionStatus.NOT_STARTED; // enum, mission의 상태
+
+    @Column(name = "created_at")
+    private LocalDateTime created_at = LocalDateTime.now();
 }
 
 
