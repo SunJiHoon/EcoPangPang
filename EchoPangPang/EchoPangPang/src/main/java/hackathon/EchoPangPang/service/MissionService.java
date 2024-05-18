@@ -6,6 +6,7 @@ import hackathon.EchoPangPang.repository.MissionMapRepository;
 import hackathon.EchoPangPang.repository.MissionRepository;
 import hackathon.EchoPangPang.repository.StampRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -33,23 +34,18 @@ public class MissionService {
      * 매일 자정에 실행된다.
      * 모든 멤버들은, 랜덤으로 3개의 미션이 매일 자정에 할당된다.
      */
-//    @Scheduled(cron = "0 0 0 * * *")
-//    public void updateDailyMissions() {
-//        // Logic to update missions for each member
-//        System.out.println("스케줄러 등록");
-//        List<Member> members = memberRepository.findAll();
-//        for (Member member : members) {
-//            updateMissionForMember(member);
-//        }
-//    }
+//    @Scheduled(fixedDelay = 10000)
+    @Scheduled(cron = "0 0 0 * * *")
+    public void updateDailyMissions() {
+        // Logic to update missions for each member
+        System.out.println("스케줄러 등록");
+        List<Member> members = memberRepository.findAll();
+        List<Mission> allMission = missionRepository.findAll();
+        for (Member member : members) {
+            updateMissionForMember(member, allMission);
+        }
+    }
 
-//    /**
-//     * 서버가 시작될 때 실행된다.
-//     */
-//    @PostConstruct
-//    public void init() {
-//        updateDailyMissions();
-//    }
 
     public void checkMissionStatus(Long id, Member member) {
         LocalDate today = LocalDate.now();
@@ -96,13 +92,6 @@ public class MissionService {
      * @return
      */
     public List<MissionMap> getTodayToDoList(Member member, LocalDate today) {
-        // Logic to update missions for each member
-        System.out.println("스케줄러 등록");
-        List<Member> members = memberRepository.findAll();
-        List<Mission> allMission = missionRepository.findAll();
-        for (Member temp : members) {
-            updateMissionForMember(temp, allMission);
-        }
 
         return missionMapRepository.findByMemberAndUpdatedDate(member, today);
     }
