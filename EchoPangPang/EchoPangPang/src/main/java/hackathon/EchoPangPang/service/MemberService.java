@@ -6,6 +6,7 @@ import hackathon.EchoPangPang.dto.ToDoItem;
 import hackathon.EchoPangPang.entity.Member;
 import hackathon.EchoPangPang.entity.MissionMap;
 import hackathon.EchoPangPang.entity.Puang;
+import hackathon.EchoPangPang.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ import java.util.List;
 public class MemberService {
 
     private final MissionService missionService;
+    private final MemberRepository memberRepository;
 
 
     public MainPageDTO getMainPageInfo(Member member) {
@@ -40,7 +42,8 @@ public class MemberService {
 
         //멤버 포인트
         //멤버의 전체 포인트
-        int point = member.getPoint();
+//        int point = member.getPoint();
+        int point = memberRepository.findById(member.getId()).get().getPoint();
 
         //멤버 포인트를 체크하고, 그에 따라 Puang 상태를 반영해야한다
         setPuangGrade(member, point);
