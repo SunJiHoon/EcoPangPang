@@ -18,18 +18,50 @@
 <div class="divBackground-container">
     <p style="font-weight: bold;"><span th:text="|${mainPageDTO.getTodayDate()}|"></span></p>
     <ul>
-        <li th:each="item, stat : ${mainPageDTO.todayToDoList}" class="custom-font">
-            <label>
-                <input type="checkbox" class="custom-checkbox"
-                       th:checked="|${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}|"
-                       th:attr="data-item-id=${item.id}" onclick="toggleCheckBox(this, '${item.id}')"/>
-                <span th:classappend="${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? 'completed'">
-<!--                    <span th:text="'목록 ' + (${stat.index + 1}) + ': ' + ${item.description}"></span>-->
-                    <span th:text="${item.description}"></span>
-                    <span style="display:none" th:text="${item.id}"></span>
-                </span>
-            </label>
-        </li>
+<!--        <li th:each="item, stat : ${mainPageDTO.todayToDoList}" class="custom-font">-->
+<!--            <label>-->
+<!--                <input type="checkbox" class="custom-checkbox"-->
+<!--                       th:checked="|${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}|"-->
+<!--                       th:attr="data-item-id=${item.id}" onclick="toggleCheckBox(this, '${item.id}')"/>-->
+<!--                <span th:classappend="${item.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? 'completed'">-->
+<!--&lt;!&ndash;                    <span th:text="'목록 ' + (${stat.index + 1}) + ': ' + ${item.description}"></span>&ndash;&gt;-->
+<!--                    <span th:text="${item.description}"></span>-->
+<!--                    <span style="display:none" th:text="${item.id}"></span>-->
+<!--                </span>-->
+<!--            </label>-->
+<!--        </li>-->
+<li>
+    <label>
+    <input type="checkbox" class="custom-checkbox"
+           th:checked="${target1.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}"
+           th:attr="data-item-id=${target1.id}, data-target='target' + ${0 + 1}"
+           >
+    <span th:classappend="${target1.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? ' completed'">
+            <span th:text="${target1.description}"></span>
+            <span style="display:none" th:text="${target1.id}"></span>
+        </span>
+</label>
+    <label>
+        <input type="checkbox" class="custom-checkbox"
+               th:checked="${target2.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}"
+               th:attr="data-item-id=${target2.id}, data-target='target' + ${0 + 1}"
+               >
+        <span th:classappend="${target2.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? ' completed'">
+            <span th:text="${target2.description}"></span>
+            <span style="display:none" th:text="${target2.id}"></span>
+        </span>
+    </label>
+    <label>
+        <input type="checkbox" class="custom-checkbox"
+               th:checked="${target3.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED}"
+               th:attr="data-item-id=${target3.id}, data-target='target' + ${0 + 1}"
+               >
+        <span th:classappend="${target3.status == T(hackathon.EchoPangPang.entity.MissionStatus).COMPLETED} ? ' completed'">
+            <span th:text="${target3.description}"></span>
+            <span style="display:none" th:text="${target3.id}"></span>
+        </span>
+    </label>
+</li>
     </ul>
 </div>
 <img src="/assets/images/Transparency.png" alt="투명 이미지" style="width: 10px; height: auto;">

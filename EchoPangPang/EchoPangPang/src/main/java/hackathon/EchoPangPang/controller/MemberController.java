@@ -33,6 +33,10 @@ public class MemberController {
 
         MainPageDTO mainPageDTO = memberService.getMainPageInfo(member);
 
+        model.addAttribute("target1", mainPageDTO.getTodayToDoList().get(0));
+        model.addAttribute("target2", mainPageDTO.getTodayToDoList().get(1));
+        model.addAttribute("target3", mainPageDTO.getTodayToDoList().get(2));
+
         model.addAttribute("mainPageDTO", mainPageDTO);
 
         return "MainPage";
